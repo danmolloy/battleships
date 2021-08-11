@@ -1,9 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import cpuShipsReducer from '../features/cpuBoard/cpuShipsSlice'
+import playerShipsReducer from '../features/playerBoard/playerShipsSlice'
+import gameReducer from '../features/Game/gameSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    game: gameReducer,
+    cpuShips: cpuShipsReducer,
+    playerShips: playerShipsReducer
   },
 });
 

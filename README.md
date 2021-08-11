@@ -1,44 +1,77 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# Battleships
 
-## Available Scripts
+A portfolio project, utilizing the following stack:
 
-In the project directory, you can run:
+React
+Redux
+Tailwind
+Cypress
+TypeScript
 
-### `yarn start`
+GraphQL
+Node.js
+Express
+Mongoose/MongoDB
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Rules
+Each player sets 5 ships on their board. These are:
+Carrier (5)
+Battleship (4)
+Destroyer (4)
+Submarine (3)
+Patrol Boat (2)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The ships are set on the board. They must not be touching (including corners).
+Players take turns attacking. If you hit a ship, you get another turn.
 
-### `yarn test`
+## User stories
+[] On load page has a title 'Battleships'
+[] There is a status component. On load this is a start button.
+[] There are two boards. One is titled 'Player Ships' and the other 'CPU Ships'.
+[] The boards are 10 * 10. They are div elements.
+[] On load there are ships already rendered in the Player board. 
+[] Below each board, one can see how many shots have been fired and what ships are remaining. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+[] Clicking start, the button turns into a pause button. The title turns into a status ie 'CPU turn'
+[] Hit accuracy % shown
 
-### `yarn build`
+## CPU turns 
+[] If no current targeted attacks, CPU takes random shots.
+[] If hit, CPU records the square number.
+[] On next turn, CPU tries squares around it. 
+[] If a hit, CPU continues in that direction.
+[] CPU knows when a ship has been sunk. Targeted attack complete and revert to random.
+[] If > 30 shots, CPU makes more targeted shots.
+[] CPU ensures enough space for a ship.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## State
+Game: 
+  inGame: bool
+  PlayersTurn: bool
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+PlayerShips:  
+  squares: Array: null | X | O | <ship: string>(<size: number>)
+  boardSet: bool
+  shots: number
+  currentAttack: Array of numbers
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CpuShips: 
+  squares: null | X | O | <ship: string>(<size: number>)
+  boardSet: true/false,
+  shots: number
 
-### `yarn eject`
+## Board component
+CPUShips:
+* SetBoard
+* HandleClick
+* HandleRender 
+* Ships Remaining
+* Shots Taken
+* Shot Accuracy
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+PlayerShips:
+* SetBoard
+* RandAttack
+* CurrentAttack
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* THese components should be HOCs
