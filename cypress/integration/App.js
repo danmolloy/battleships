@@ -1,3 +1,8 @@
+import { 
+  setVerticalShip, 
+  setHorizontalShip 
+} from '../../src/features/cpuBoard/setShip'
+
 describe("<App /> renders", () => {
   beforeEach(() => {
     cy.visit('/')
@@ -32,6 +37,13 @@ describe("<Header />", () => {
     cy.get('.status')
       .should('not.have.text', 'turn')
   })
+
+  it("onClick Start button text changes to Pause", () => {
+    cy.get('#status-btn')
+      .click()
+      .should('contain', 'Pause')
+  })
+
 })
 
 describe("<CPUShips /> ", () => {
@@ -48,7 +60,7 @@ describe("<CPUShips /> ", () => {
     cy.get('#cpu-ships .square')
       .should('have.length', 100)
   })
-
+/*
   it("Squares should have value of null", () => {
     cy.get('#cpu-ships .square')
     // assertion needed
@@ -61,7 +73,7 @@ describe("<CPUShips /> ", () => {
   it("boardSet should equal false", () => {
 
   })
-
+*/
 })
 
 describe("<PlayerShips />", () => {
@@ -78,7 +90,7 @@ describe("<PlayerShips />", () => {
     cy.get('#player-ships .square')
       .should('have.length', 100)
   })
-
+/*
   it("Squares should have value of null", () => {
     cy.get('#player-ships .squares')
   })
@@ -93,6 +105,28 @@ describe("<PlayerShips />", () => {
 
   it("currentAttack should equal null", () => {
     
+  })*/
+})
+
+describe("Unit test for setShip function", () => {
+  context('setVerticalShip', () => {
+    it('returns a suitable index', () => {
+      expect(setVerticalShip(3)).to.be.lessThan(70)
+      expect(setVerticalShip(5)).to.be.lessThan(50)
+      expect(setVerticalShip(7)).to.be.lessThan(30)
+      expect(setVerticalShip(8)).to.be.lessThan(20)
+      expect(setVerticalShip(9)).to.be.lessThan(10)
+    })
+  })
+
+  context('setHorizontallShip', () => {
+    it('returns a suitable index', () => {
+      expect(setHorizontalShip(3)).to.not.match(/[8-9]$/)
+      expect(setHorizontalShip(5)).to.not.match(/[6-9]$/)
+      expect(setHorizontalShip(7)).to.not.match(/[4-9]$/)
+      expect(setHorizontalShip(8)).to.not.match(/[3-9]$/)
+      expect(setHorizontalShip(9)).to.not.match(/[2-9]$/)
+    })
   })
 })
 
