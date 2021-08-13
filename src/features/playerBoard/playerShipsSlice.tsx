@@ -19,7 +19,14 @@ const initialState: PlayerBoardState = {
 export const playerShipsSlice = createSlice({
   name: 'playerShips',
   initialState,
-  reducers: {}
+  reducers: {
+    updateSquares: (state, action) => {
+      for (let i = 0; i < action.payload.length; i++) {
+        state.PlayerSquares.splice(action.payload[i], 1, 'X')
+      }
+    }
+  }
 })
 
+export const { updateSquares }  = playerShipsSlice.actions
 export default playerShipsSlice.reducer

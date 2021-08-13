@@ -1,7 +1,9 @@
+import squares from '../../src/features/playerBoard'
+
 import { 
   setVerticalShip, 
   setHorizontalShip 
-} from '../../src/features/cpuBoard/setShip'
+} from '../../src/features/Game/setShip'
 
 describe("<App /> renders", () => {
   beforeEach(() => {
@@ -90,6 +92,8 @@ describe("<PlayerShips />", () => {
     cy.get('#player-ships .square')
       .should('have.length', 100)
   })
+    
+  })
 /*
   it("Squares should have value of null", () => {
     cy.get('#player-ships .squares')
@@ -126,6 +130,18 @@ describe("Unit test for setShip function", () => {
       expect(setHorizontalShip(7)).to.not.match(/[4-9]$/)
       expect(setHorizontalShip(8)).to.not.match(/[3-9]$/)
       expect(setHorizontalShip(9)).to.not.match(/[2-9]$/)
+    })
+  })
+
+  context('calling setShip changes state to expected values', () => {
+    it('setShip is ok', () => {
+      let arrLength = 0
+      for (let i = 0; i < 100; i++) {
+        arrLength ++
+      }
+      
+      cy.get('#player-ships .square')
+        .should('have.length', arrLength)
     })
   })
 })

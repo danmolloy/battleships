@@ -74,4 +74,5 @@ PlayerShips:
 * RandAttack
 * CurrentAttack
 
-* THese components should be HOCs
+
+* setShip should only need one call.

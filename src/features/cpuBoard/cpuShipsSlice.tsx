@@ -16,8 +16,16 @@ const initialState: CPUBoardState = {
 export const cpuShipsSlice = createSlice({
   name: 'cpuShips',
   initialState,
-  reducers: {}
+  reducers: {
+    handleAttack: (state, action) => {
+      if (state.CPUSquares[action.payload] === null) {
+        state.CPUSquares.splice(action.payload, 1, 'O')
+      } else {
+        state.CPUSquares.splice(action.payload, 1, 'X')
+      }
+    }
+  }
 })
 
-
+export const { handleAttack } = cpuShipsSlice.actions
 export default cpuShipsSlice.reducer
