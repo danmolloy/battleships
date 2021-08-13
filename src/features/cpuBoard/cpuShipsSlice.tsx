@@ -23,9 +23,12 @@ export const cpuShipsSlice = createSlice({
       } else {
         state.CPUSquares.splice(action.payload, 1, 'X')
       }
+    },
+    addAttack: state => {
+      state.numAttacks += 1
     }
   }
 })
 
-export const { handleAttack } = cpuShipsSlice.actions
+export const { handleAttack, addAttack } = cpuShipsSlice.actions
 export default cpuShipsSlice.reducer

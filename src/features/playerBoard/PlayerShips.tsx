@@ -5,6 +5,7 @@ import { updateSquares } from './playerShipsSlice'
 
 export const PlayerShips = () => {
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
+  const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
   const dispatch = useAppDispatch()
 
   const renderedSquares = squares.map(i => 
@@ -23,6 +24,7 @@ export const PlayerShips = () => {
       <div className="inner-board">
         {renderedSquares}
       </div>
+      <p>Attack count: {attackCount}</p>
       <button onClick={setBoard}>Render</button>
     </div>
   )
