@@ -14,11 +14,19 @@ export const setShip = (length, currentState) => {
 export const setVerticalShip = (length, squaresSlice) => {
   let index = randInt(99 - (length * 10))
   let i = index - 10
+  let loopCount = 0;
   
   while (i <= index + (length * 10)) {
-    if (squaresSlice[i] !== null ||
-        squaresSlice[i - 1] !== null ||
-        squaresSlice[i + 1] !== null
+    loopCount++
+    if (loopCount > 9) {
+      alert('error in Vertical')
+      return;
+    } else if (squaresSlice[i].val !== null ||
+        squaresSlice[i].val == undefined ||
+        squaresSlice[i - 1].val !== null ||
+        squaresSlice[i - 1].val == undefined ||
+        squaresSlice[i + 1].val !== null ||
+        squaresSlice[i + 1].val == undefined
       ) {
         index = randInt(99 - (length * 10))
         i = index - 10
@@ -41,10 +49,19 @@ export const setHorizontalShip = (length, squaresSlice) => {
   let regex = new RegExp(`[${regexVal}-9]$`)
   let i = index - 1;
 
+  let loopCount = 0;
+
   while (i <= index + (length)) {
-    if (squaresSlice[i] !== null || 
-        squaresSlice[i - 10] !== null ||
-        squaresSlice[i + 10] !== null ||
+    loopCount++
+    if (loopCount > 9) {
+      alert('error in Horizontal')
+      return;
+    } else if (squaresSlice[i].val !== null || 
+        squaresSlice[i].val == undefined || 
+        squaresSlice[i - 10].val !== null ||
+        squaresSlice[i - 10].val == undefined ||
+        squaresSlice[i + 10].val !== null ||
+        squaresSlice[i + 10].val == undefined ||
         regex.test(String(index))
       ) {
         index = randInt(99);

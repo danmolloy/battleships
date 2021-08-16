@@ -1,15 +1,19 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 
+
 interface PlayerBoardState {
-  PlayerSquares: Array<null | string>,
+  PlayerSquares: Array<{val: null | string, id: any}>,
   boardSet: boolean,
   numAttacks: number,
   currentAttack: number[] | null
 }
 
 const initialState: PlayerBoardState = {
-  PlayerSquares: new Array(100).fill(null),
+  PlayerSquares: new Array(100).fill({
+    val: null,
+    id: nanoid(),
+  }),
   boardSet: false,
   numAttacks: 0,
   currentAttack: null
@@ -21,12 +25,15 @@ export const playerShipsSlice = createSlice({
   initialState,
   reducers: {
     updateSquares: (state, action) => {
-      for (let i = 0; i < action.payload.length; i++) {
-        state.PlayerSquares.splice(action.payload[i], 1, 'X')
+      for(let i=0; i < action.payload.length; i++) {
+        state.PlayerSquares[action.payload[i]].val = '•'
       }
+    },
+    updateNumAttacks: (state) => {
+      state.numAttacks = state.numAttacks + 1
     }
   }
 })
 
-export const { updateSquares }  = playerShipsSlice.actions
+export const { updateSquares, updateNumAttacks }  = playerShipsSlice.actions
 export default playerShipsSlice.reducer

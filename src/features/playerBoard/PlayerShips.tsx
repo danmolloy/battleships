@@ -1,7 +1,8 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
 import { setShip } from "../Game/setShip"
-import { updateSquares } from './playerShipsSlice'
+import { updateSquares, updateNumAttacks } from './playerShipsSlice'
+import { useState } from 'react'
 
 export const PlayerShips = () => {
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
@@ -9,13 +10,14 @@ export const PlayerShips = () => {
   const dispatch = useAppDispatch()
 
   const renderedSquares = squares.map(i => 
-    <div key={i} className="square">
-      {i}
+    <div key={i.id} 
+    className="square">
+      {i.val}
     </div>
     )
   
-  const setBoard = () => {
-    dispatch(updateSquares(setShip(5, squares.slice())))
+  const setBoard = async() => {
+   dispatch(updateSquares(setShip(5, squares)))
   }
 
   return (
