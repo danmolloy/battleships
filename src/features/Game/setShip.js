@@ -4,7 +4,7 @@ export const setShip = (length, currentState) => {
   let squares = currentState.slice()
 
   
-  if (randInt(2) === 0) { 
+  if (randInt(2) === 1) { 
     return setVerticalShip(length, squares)
   } else { 
     return setHorizontalShip(length, squares)
@@ -14,22 +14,23 @@ export const setShip = (length, currentState) => {
 export const setVerticalShip = (length, squaresSlice) => {
   let index = randInt(99 - (length * 10))
   let i = index - 10
-  let loopCount = 0;
+
+  if (i < 0) {
+    i += 10
+  }
   
   while (i <= index + (length * 10)) {
-    loopCount++
-    if (loopCount > 9) {
-      alert('error in Vertical')
-      return;
-    } else if (squaresSlice[i].val !== null ||
-        squaresSlice[i].val == undefined ||
-        squaresSlice[i - 1].val !== null ||
-        squaresSlice[i - 1].val == undefined ||
-        squaresSlice[i + 1].val !== null ||
-        squaresSlice[i + 1].val == undefined
+    if (squaresSlice[i].val === "•" ||
+        squaresSlice[i - 1].val === "•" ||
+        squaresSlice[i + 1].val === "•"
       ) {
         index = randInt(99 - (length * 10))
         i = index - 10
+        if (i < 0) {
+          i += 10
+        } else if (i > 89) {
+          break;
+        }
       } else {
         i += 10;
       }
@@ -48,20 +49,12 @@ export const setHorizontalShip = (length, squaresSlice) => {
   let regexVal = (9 - length + 1)
   let regex = new RegExp(`[${regexVal}-9]$`)
   let i = index - 1;
-
-  let loopCount = 0;
+  
 
   while (i <= index + (length)) {
-    loopCount++
-    if (loopCount > 9) {
-      alert('error in Horizontal')
-      return;
-    } else if (squaresSlice[i].val !== null || 
-        squaresSlice[i].val == undefined || 
+    if (squaresSlice[i].val !== null || 
         squaresSlice[i - 10].val !== null ||
-        squaresSlice[i - 10].val == undefined ||
         squaresSlice[i + 10].val !== null ||
-        squaresSlice[i + 10].val == undefined ||
         regex.test(String(index))
       ) {
         index = randInt(99);
@@ -79,3 +72,5 @@ export const setHorizontalShip = (length, squaresSlice) => {
   return arr
   
 }
+
+// Edge of board cases returning undefined

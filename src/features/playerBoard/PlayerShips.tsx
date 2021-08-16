@@ -17,7 +17,7 @@ export const PlayerShips = () => {
     )
   
   const setBoard = async() => {
-   dispatch(updateSquares(setShip(5, squares)))
+   dispatch(updateSquares(setShip(2, squares)))
   }
 
   return (
