@@ -8,7 +8,7 @@ export const store = configureStore({
     game: gameReducer,
     cpuShips: cpuShipsReducer,
     playerShips: playerShipsReducer
-  },
+  }
 });
 
 export type AppDispatch = typeof store.dispatch;

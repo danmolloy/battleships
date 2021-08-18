@@ -75,7 +75,8 @@ PlayerShips:
 * CurrentAttack
 
 
-* set both boards on start click (thunks?)
+* set both boards on start click (thunk)
+* show list of ships remaining
 * Turns
 * Declare winner/End game
 * Testing Testing Testing!

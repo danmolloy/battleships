@@ -2,7 +2,6 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
 import { setShip } from "../Game/setShip"
 import { setAllShips, updateSquares, updateNumAttacks } from './playerShipsSlice'
-import { useState } from 'react'
 
 export const PlayerShips = () => {
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
@@ -17,7 +16,7 @@ export const PlayerShips = () => {
     )
   
   const setBoard = () => {
-    dispatch(setAllShips())
+   dispatch(setAllShips())
   }
 
   return (
@@ -27,7 +26,7 @@ export const PlayerShips = () => {
         {renderedSquares}
       </div>
       <p>Attack count: {attackCount}</p>
-      <button onClick={setBoard}>Render</button>
+      <button onClick={setBoard}>Set</button>
     </div>
   )
 }
