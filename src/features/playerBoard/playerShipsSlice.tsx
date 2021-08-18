@@ -1,7 +1,6 @@
-import { createAsyncThunk, createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
-import type { AppDispatch, RootState, AppThunk } from '../../app/store'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
+import type { RootState, AppThunk } from '../../app/store'
 import { setShip } from '../Game/setShip'
-import { useAppSelector, useAppDispatch } from '../../app/hooks'
 
 
 interface PlayerBoardState {

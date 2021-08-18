@@ -1,6 +1,5 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
-import { setShip } from "../Game/setShip"
 import { setAllShips, updateSquares, updateNumAttacks } from './playerShipsSlice'
 
 export const PlayerShips = () => {
