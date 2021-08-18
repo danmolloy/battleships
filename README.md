@@ -75,4 +75,7 @@ PlayerShips:
 * CurrentAttack
 
 
-* setShip should only need one call.
+* set both boards on start click (thunks?)
+* Turns
+* Declare winner/End game
+* Testing Testing Testing!

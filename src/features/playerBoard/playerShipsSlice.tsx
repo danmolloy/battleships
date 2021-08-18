@@ -1,6 +1,6 @@
-import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
-
+import { setShip } from '../Game/setShip'
 
 interface PlayerBoardState {
   PlayerSquares: Array<{val: null | string, id: any}>,
@@ -34,6 +34,10 @@ export const playerShipsSlice = createSlice({
     }
   }
 })
+
+export const setAllShips =  () => async() => {
+  
+}
 
 export const { updateSquares, updateNumAttacks }  = playerShipsSlice.actions
 export default playerShipsSlice.reducer
