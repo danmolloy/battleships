@@ -4,7 +4,7 @@ import { setShip } from '../Game/setShip'
 
 
 interface PlayerBoardState {
-  PlayerSquares: Array<{val: null | string, id: any}>,
+  PlayerSquares: Array<{val: any, id: any}>,
   boardSet: boolean,
   numAttacks: number,
   currentAttack: number[] | null

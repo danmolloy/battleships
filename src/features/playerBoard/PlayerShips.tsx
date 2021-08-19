@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
 import { setAllShips, updateSquares, updateNumAttacks } from './playerShipsSlice'
 
 export const PlayerShips = () => {
+  const [shipsArr, setShipsArr] = useState([])
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
   const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
   const dispatch = useAppDispatch()
@@ -13,6 +15,14 @@ export const PlayerShips = () => {
       {i.val}
     </div>
     )
+  
+  useEffect(() => {
+    shipsRemaining()
+  })
+  
+  const shipsRemaining = () => {
+    
+  }
   
   const setBoard = () => {
    dispatch(setAllShips())
@@ -25,6 +35,8 @@ export const PlayerShips = () => {
         {renderedSquares}
       </div>
       <p>Attack count: {attackCount}</p>
+      {shipsArr.length > 0 && 
+      <p>Ships Remaining: {shipsArr}</p>}
       <button onClick={setBoard}>Set</button>
     </div>
   )
