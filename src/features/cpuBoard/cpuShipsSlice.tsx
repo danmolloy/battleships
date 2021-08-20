@@ -22,7 +22,7 @@ export const cpuShipsSlice = createSlice({
   initialState,
   reducers: {
     updateSquares: (state, action) => {
-      for(let i=0; i < action.payload.length; i++) {
+      for (let i=0; i < action.payload.length; i++) {
         state.CPUSquares[action.payload[i]].val = '•'
       }
     },
@@ -32,7 +32,7 @@ export const cpuShipsSlice = createSlice({
   }
 })
 
-const getBoard = (state: RootState) => state.playerShips.PlayerSquares
+const getBoard = (state: RootState) => state.cpuShips.CPUSquares
 
 export const setAllShips = (): AppThunk => (
   dispatch,

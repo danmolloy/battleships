@@ -26,7 +26,7 @@ export const playerShipsSlice = createSlice({
   initialState,
   reducers: {
     updateSquares: (state, action) => {
-      for(let i=0; i < action.payload.length; i++) {
+      for (let i=0; i < action.payload.length; i++) {
         state.PlayerSquares[action.payload[i]].val = '•'
       }
     },

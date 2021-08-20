@@ -23,7 +23,7 @@ const setVerticalShip = (length, squaresSlice) => {
   let index = randInt(100 - (length * 10))
   let loopCount = 0;
 
-  while (loopCount < 20) {  
+  while (loopCount < 50) {  
     if (index === 0) {
       if (verticalCheck(0, index + (length * 10), squaresSlice) &&
         verticalCheck(1, index + (length * 10 + 1), squaresSlice)) {
@@ -136,7 +136,7 @@ const setHorizontalShip = (length, squaresSlice) => {
   let index = horizonatalIndex(length)
   let loopCount = 0
 
-  while (loopCount < 10) {
+  while (loopCount < 50) {
       if (index === 0) {
         if (horizontalCheck(index, index + length, squaresSlice) && 
           horizontalCheck(index + 10, index + length + 10, squaresSlice)) {

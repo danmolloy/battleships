@@ -77,6 +77,8 @@ PlayerShips:
 
 * set both boards on start click (thunk)
 * show list of ships remaining
+* on square click cpu ship val updates
+* CPU rand attack
 * Turns
 * Declare winner/End game
 * Testing Testing Testing!
