@@ -1,14 +1,18 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../../app/store'
+import { createSlice, nanoid } from '@reduxjs/toolkit'
+import type { RootState, AppThunk } from '../../app/store'
+import { setShip } from '../Game/setShip'
 
 interface CPUBoardState {
-  CPUSquares: Array<null | string>,
+  CPUSquares: Array<{val: any, id: any}>,
   boardSet: boolean,
   numAttacks: number
 }
 
 const initialState: CPUBoardState = {
-  CPUSquares: new Array(100).fill(null),
+  CPUSquares: new Array(100).fill({
+    val: null,
+    id: nanoid(),
+  }),
   boardSet: false,
   numAttacks: 0
 }
@@ -17,11 +21,9 @@ export const cpuShipsSlice = createSlice({
   name: 'cpuShips',
   initialState,
   reducers: {
-    handleAttack: (state, action) => {
-      if (state.CPUSquares[action.payload] === null) {
-        state.CPUSquares.splice(action.payload, 1, 'O')
-      } else {
-        state.CPUSquares.splice(action.payload, 1, 'X')
+    updateSquares: (state, action) => {
+      for(let i=0; i < action.payload.length; i++) {
+        state.CPUSquares[action.payload[i]].val = '•'
       }
     },
     addAttack: state => {
@@ -30,5 +32,23 @@ export const cpuShipsSlice = createSlice({
   }
 })
 
-export const { handleAttack, addAttack } = cpuShipsSlice.actions
+const getBoard = (state: RootState) => state.playerShips.PlayerSquares
+
+export const setAllShips = (): AppThunk => (
+  dispatch,
+  getState
+) => {
+  let currentBoard = getBoard(getState())
+  dispatch(updateSquares(setShip(5, currentBoard)))
+  currentBoard = getBoard(getState())
+  dispatch(updateSquares(setShip(4, currentBoard)))
+  currentBoard = getBoard(getState())
+  dispatch(updateSquares(setShip(3, currentBoard)))
+  currentBoard = getBoard(getState())
+  dispatch(updateSquares(setShip(3, currentBoard)))
+  currentBoard = getBoard(getState())
+  dispatch(updateSquares(setShip(2, currentBoard)))
+}
+
+export const { addAttack, updateSquares } = cpuShipsSlice.actions
 export default cpuShipsSlice.reducer

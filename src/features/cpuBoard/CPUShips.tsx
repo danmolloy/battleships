@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { addAttack } from './cpuShipsSlice'
+import { addAttack, setAllShips } from './cpuShipsSlice'
 
 export const CPUShips = () => {
   const squares = useAppSelector(state => state.cpuShips.CPUSquares)
@@ -7,13 +7,17 @@ export const CPUShips = () => {
 
   const dispatch = useAppDispatch()
 
+  const setBoard = () => {
+    dispatch(setAllShips())
+  }
+
   const renderedSquares = squares.map(i => 
     <div 
-    key={i} 
+    key={i.id} 
     className="square hover:bg-blue-500" 
     onClick={() => dispatch(addAttack())}
     >
-      {i}
+      {i.val}
     </div>
     )
 
@@ -23,7 +27,8 @@ export const CPUShips = () => {
       <div className="inner-board">
         {renderedSquares}
       </div>
-      Attack count: {attackCount}
+      <p>Attack count: {attackCount}</p>
+      <button onClick={setBoard}>Set</button>
     </div>
   )
 }
