@@ -38,7 +38,7 @@ export const playerShipsSlice = createSlice({
 
 const getBoard = (state: RootState) => state.playerShips.PlayerSquares
 
-export const setAllShips = (): AppThunk => (
+export const setPlayerShips = (): AppThunk => (
   dispatch,
   getState
 ) => {

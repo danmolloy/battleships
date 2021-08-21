@@ -1,21 +1,29 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { addAttack, setAllShips } from './cpuShipsSlice'
+import { setTurn } from '../Game/gameSlice'
+import { addAttack, setCPUShips } from './cpuShipsSlice'
+
 
 export const CPUShips = () => {
   const squares = useAppSelector(state => state.cpuShips.CPUSquares)
   const attackCount = useAppSelector(state => state.cpuShips.numAttacks)
+  const turn = useAppSelector(state => state.game.turn)
 
   const dispatch = useAppDispatch()
 
-  const setBoard = () => {
-    dispatch(setAllShips())
+  const handleClick = () => {
+    if (turn !== "Player") {
+      return;
+    } else {
+      dispatch(addAttack())
+      dispatch(setTurn())
+    }
   }
 
   const renderedSquares = squares.map(i => 
     <div 
     key={i.id} 
     className="square hover:bg-blue-500" 
-    onClick={() => dispatch(addAttack())}
+    onClick={handleClick}
     >
       {i.val}
     </div>
@@ -28,7 +36,6 @@ export const CPUShips = () => {
         {renderedSquares}
       </div>
       <p>Attack count: {attackCount}</p>
-      <button onClick={setBoard}>Set</button>
     </div>
   )
 }

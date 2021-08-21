@@ -34,7 +34,7 @@ export const cpuShipsSlice = createSlice({
 
 const getBoard = (state: RootState) => state.cpuShips.CPUSquares
 
-export const setAllShips = (): AppThunk => (
+export const setCPUShips = (): AppThunk => (
   dispatch,
   getState
 ) => {

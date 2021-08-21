@@ -1,5 +1,8 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { toggleInGame } from './gameSlice'
+import { toggleInGame, setTurn } from './gameSlice'
+import { useEffect } from 'react'
+import { setPlayerShips } from '../playerBoard/playerShipsSlice'
+import { setCPUShips } from '../cpuBoard/cpuShipsSlice'
 
 export const Header = () => {
   const turn = useAppSelector(state => state.game.turn)
@@ -7,12 +10,17 @@ export const Header = () => {
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
+    if (inGame === 'idle') {
+      dispatch(setCPUShips())
+      dispatch(setPlayerShips())
+      dispatch(setTurn())
+    }
     dispatch(toggleInGame())
   }
 
   return (
     <div className="header m-3" id="header">
-      <h1>Battleships</h1>
+      <h1>{turn === null ? "Battleships" : `${turn} turn`}</h1>
       <button id="status-btn" 
       className="py-2 px-4 bg-green-500 
         text-white font-semibold rounded-lg 
@@ -20,10 +28,9 @@ export const Header = () => {
         focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
         onClick={handleClick}
       >
-        {inGame ? 'Pause' : 'Start'}
+        {inGame === 'idle' ? 'Start' : inGame ? 'Pause' : 'Resume'}
       </button>
       <div className="status">
-        {turn}
       </div>
     </div>
   )

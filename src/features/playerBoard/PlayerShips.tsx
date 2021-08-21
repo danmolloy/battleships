@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
-import { setAllShips, updateSquares, updateNumAttacks } from './playerShipsSlice'
+import { setPlayerShips, updateSquares, updateNumAttacks } from './playerShipsSlice'
 
 export const PlayerShips = () => {
   const [shipsArr, setShipsArr] = useState([])
@@ -23,10 +23,6 @@ export const PlayerShips = () => {
   const shipsRemaining = () => {
     
   }
-  
-  const setBoard = () => {
-   dispatch(setAllShips())
-  }
 
   return (
     <div className="outer-board" id="player-ships">
@@ -37,7 +33,6 @@ export const PlayerShips = () => {
       <p>Attack count: {attackCount}</p>
       {shipsArr.length > 0 && 
       <p>Ships Remaining: {shipsArr}</p>}
-      <button onClick={setBoard}>Set</button>
     </div>
   )
 }
