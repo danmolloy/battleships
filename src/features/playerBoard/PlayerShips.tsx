@@ -24,6 +24,10 @@ export const PlayerShips = () => {
     
   }
 
+  const handleAttack = () => {
+    return 
+  }
+
   return (
     <div className="outer-board" id="player-ships">
       <h3>Player Ships</h3>
@@ -33,6 +37,7 @@ export const PlayerShips = () => {
       <p>Attack count: {attackCount}</p>
       {shipsArr.length > 0 && 
       <p>Ships Remaining: {shipsArr}</p>}
+      <button onClick={handleAttack}>Attack!</button>
     </div>
   )
 }
