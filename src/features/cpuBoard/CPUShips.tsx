@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { setTurn } from '../Game/gameSlice'
-import { handleAttack, setCPUShips } from './cpuShipsSlice'
+import { handleAttack } from './cpuShipsSlice'
 
 
 export const CPUShips = () => {
@@ -31,7 +31,22 @@ export const CPUShips = () => {
       {i.val === null ? null : i.val.length > 1 ? "•" : i.val}
     </div>
     )
+  
+  const shipsArr = () => {
+    let arr: string[] = []
+    for (let i = 0; i < squares.length; i++) {
+      if (squares[i].val !== null &&
+          squares[i].val.length > 1 &&
+          !arr.includes(squares[i].val)
+        ) {
+          arr.push(squares[i].val)
+        }
+    } 
+    arr.sort()
+    return arr.map(i => <p>{i}</p>)
+  }  
 
+ 
   return (
     <div className="outer-board" id="cpu-ships">
       <h3>CPU Ships</h3>
@@ -39,6 +54,11 @@ export const CPUShips = () => {
         {renderedSquares}
       </div>
       <p>Attack count: {attackCount}</p>
+      <div>
+        Ships Remaining: {shipsArr().length}
+        <div>{shipsArr()}
+        </div>
+      </div>
     </div>
   )
 }

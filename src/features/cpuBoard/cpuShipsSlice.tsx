@@ -26,19 +26,33 @@ export const cpuShipsSlice = createSlice({
     updateSquares: (state, action) => {
       if (action.payload.length === 5) {
         for (let i=0; i < action.payload.length; i++) {
-          state.CPUSquares[action.payload[i]].val = 'Carrier'
+          state.CPUSquares[action.payload[i]].val = '(5) Carrier'
         }
       } else if (action.payload.length === 4) {
         for (let i=0; i < action.payload.length; i++) {
-          state.CPUSquares[action.payload[i]].val = 'BattleShip'
+          state.CPUSquares[action.payload[i]].val = '(4) Battleship'
         }
       } else if (action.payload.length === 3) {
-        for (let i=0; i < action.payload.length; i++) {
-          state.CPUSquares[action.payload[i]].val = 'Submarine'
+        const checker = () => {
+          for (let i = 0; i < state.CPUSquares.length; i++) {
+            if (state.CPUSquares[i].val === "(3) Submarine") {
+              return true
+            }
+          } return false
         }
+        if (checker() === true) {
+          for (let i=0; i < action.payload.length; i++) {
+            state.CPUSquares[action.payload[i]].val = '(3) Destroyer'
+            }
+        } else {
+          for (let i=0; i < action.payload.length; i++) {
+            state.CPUSquares[action.payload[i]].val = '(3) Submarine'
+            }
+        }
+        
       } else if (action.payload.length === 2) {
         for (let i=0; i < action.payload.length; i++) {
-          state.CPUSquares[action.payload[i]].val = 'PatrolBoat'
+          state.CPUSquares[action.payload[i]].val = '(2) PatrolBoat'
         }
       }
     },
@@ -53,6 +67,7 @@ export const cpuShipsSlice = createSlice({
     }
   }
 })
+
 
 const getBoard = (state: RootState) => state.cpuShips.CPUSquares
 

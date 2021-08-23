@@ -5,10 +5,11 @@ import { setPlayerShips, updateSquares, handleAttack } from './playerShipsSlice'
 import { setTurn } from '../Game/gameSlice'
 
 export const PlayerShips = () => {
-  const [shipsArr, setShipsArr] = useState([])
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
   const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
+  const turn = useAppSelector((state: RootState) => state.game.turn)
   const dispatch = useAppDispatch()
+
 
   const renderedSquares = squares.map(i => 
     <div key={i.id} 
@@ -16,16 +17,11 @@ export const PlayerShips = () => {
       {i.val === null ? null : i.val.length > 1 ? "•" : i.val}
     </div>
     )
-  
-  useEffect(() => {
-    shipsRemaining()
-  })
-  
-  const shipsRemaining = () => {
-    
-  }
 
   const handleShot = () => {
+    if (turn !== "CPU") {
+      return;
+    }
     let randIndex = Math.floor(Math.random() * 100)
     while (squares[randIndex].val === 'O' || squares[randIndex].val === "X") {
       randIndex = Math.floor(Math.random() * 100)
@@ -34,6 +30,21 @@ export const PlayerShips = () => {
     dispatch(setTurn())
   }
 
+  const shipsArr = () => {
+    let arr: string[] = []
+    for (let i = 0; i < squares.length; i++) {
+      if (squares[i].val !== null &&
+          squares[i].val.length > 1 &&
+          !arr.includes(squares[i].val)
+        ) {
+          arr.push(squares[i].val)
+        }
+    } 
+    arr.sort()
+    return arr.map(i => <p>{i}</p>)
+  }  
+
+
   return (
     <div className="outer-board" id="player-ships">
       <h3>Player Ships</h3>
@@ -41,8 +52,11 @@ export const PlayerShips = () => {
         {renderedSquares}
       </div>
       <p>Attack count: {attackCount}</p>
-      {shipsArr.length > 0 && 
-      <p>Ships Remaining: {shipsArr}</p>}
+      <div>
+        Ships Remaining: {shipsArr().length}
+        <div>{shipsArr()}
+        </div>
+      </div>
       <button onClick={handleShot}>Attack!</button>
     </div>
   )
