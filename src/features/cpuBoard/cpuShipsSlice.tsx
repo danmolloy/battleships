@@ -3,7 +3,7 @@ import type { RootState, AppThunk } from '../../app/store'
 import { setShip } from '../Game/setShip'
 
 interface CPUBoardState {
-  CPUSquares: Array<any>,
+  CPUSquares: Array<{val: any, id: any}>,
   boardSet: boolean,
   numAttacks: number
 }

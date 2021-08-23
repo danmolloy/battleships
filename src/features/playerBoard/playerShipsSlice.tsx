@@ -11,10 +11,12 @@ interface PlayerBoardState {
 }
 
 const initialState: PlayerBoardState = {
-  PlayerSquares: new Array(100).fill({
-    val: null,
-    id: nanoid(),
-  }),
+  PlayerSquares: new Array(100).fill(null).map(i => (
+    i = {
+      id: nanoid(),
+      val: null
+    }
+  )),
   boardSet: false,
   numAttacks: 0,
   currentAttack: null
@@ -30,8 +32,14 @@ export const playerShipsSlice = createSlice({
         state.PlayerSquares[action.payload[i]].val = '•'
       }
     },
-    updateNumAttacks: (state) => {
-      state.numAttacks = state.numAttacks + 1
+    handleAttack: (state, action) => {
+      const square = state.PlayerSquares.find(square => square.id === action.payload)
+      if (square?.val === null) {
+        square.val = 'O'
+      } else if (square?.val !== null && square !== undefined) {
+        square.val = 'X'
+      }
+      state.numAttacks += 1
     }
   }
 })
@@ -54,5 +62,5 @@ export const setPlayerShips = (): AppThunk => (
   dispatch(updateSquares(setShip(2, currentBoard)))
 }
 
-export const { updateSquares, updateNumAttacks }  = playerShipsSlice.actions
+export const { updateSquares, handleAttack }  = playerShipsSlice.actions
 export default playerShipsSlice.reducer

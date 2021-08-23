@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
-import { setPlayerShips, updateSquares, updateNumAttacks } from './playerShipsSlice'
+import { setPlayerShips, updateSquares, handleAttack } from './playerShipsSlice'
 
 export const PlayerShips = () => {
   const [shipsArr, setShipsArr] = useState([])
@@ -24,8 +24,12 @@ export const PlayerShips = () => {
     
   }
 
-  const handleAttack = () => {
-    return 
+  const handleShot = () => {
+    let randIndex = Math.floor(Math.random() * 100)
+    while (squares[randIndex].val === 'O' || squares[randIndex].val === "X") {
+      randIndex = Math.floor(Math.random() * 100)
+    }
+    dispatch(handleAttack(squares[randIndex].id))
   }
 
   return (
@@ -37,7 +41,7 @@ export const PlayerShips = () => {
       <p>Attack count: {attackCount}</p>
       {shipsArr.length > 0 && 
       <p>Ships Remaining: {shipsArr}</p>}
-      <button onClick={handleAttack}>Attack!</button>
+      <button onClick={handleShot}>Attack!</button>
     </div>
   )
 }

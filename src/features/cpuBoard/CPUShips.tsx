@@ -11,7 +11,10 @@ export const CPUShips = () => {
   const dispatch = useAppDispatch()
 
   const handleClick = (squareID: string) => {
-    if (turn !== "Player") {
+    let shotSquare = squares.find(i => i.id === squareID)
+    if (turn !== "Player" || 
+      shotSquare?.val === 'O' ||
+      shotSquare?.val === 'X') {
       return;
     } else {
       dispatch(handleAttack(squareID))
