@@ -1,6 +1,6 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { setTurn } from '../Game/gameSlice'
-import { addAttack, setCPUShips } from './cpuShipsSlice'
+import { handleAttack, setCPUShips } from './cpuShipsSlice'
 
 
 export const CPUShips = () => {
@@ -10,12 +10,11 @@ export const CPUShips = () => {
 
   const dispatch = useAppDispatch()
 
-  const handleClick = () => {
+  const handleClick = (squareID: string) => {
     if (turn !== "Player") {
       return;
     } else {
-      dispatch(addAttack())
-      dispatch(setTurn())
+      dispatch(handleAttack(squareID))
     }
   }
 
@@ -23,7 +22,7 @@ export const CPUShips = () => {
     <div 
     key={i.id} 
     className="square hover:bg-blue-500" 
-    onClick={handleClick}
+    onClick={() => handleClick(i.id)}
     >
       {i.val}
     </div>
@@ -38,4 +37,8 @@ export const CPUShips = () => {
       <p>Attack count: {attackCount}</p>
     </div>
   )
+}
+
+function i(i: any, arg1: (index: any) => JSX.Element) {
+  throw new Error('Function not implemented.')
 }
