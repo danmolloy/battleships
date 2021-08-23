@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
 import { setPlayerShips, updateSquares, handleAttack } from './playerShipsSlice'
+import { setTurn } from '../Game/gameSlice'
 
 export const PlayerShips = () => {
   const [shipsArr, setShipsArr] = useState([])
@@ -12,7 +13,7 @@ export const PlayerShips = () => {
   const renderedSquares = squares.map(i => 
     <div key={i.id} 
     className="square">
-      {i.val}
+      {i.val === null ? null : i.val.length > 1 ? "•" : i.val}
     </div>
     )
   
@@ -30,6 +31,7 @@ export const PlayerShips = () => {
       randIndex = Math.floor(Math.random() * 100)
     }
     dispatch(handleAttack(squares[randIndex].id))
+    dispatch(setTurn())
   }
 
   return (

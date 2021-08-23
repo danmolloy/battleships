@@ -28,8 +28,22 @@ export const playerShipsSlice = createSlice({
   initialState,
   reducers: {
     updateSquares: (state, action) => {
-      for (let i=0; i < action.payload.length; i++) {
-        state.PlayerSquares[action.payload[i]].val = '•'
+      if (action.payload.length === 5) {
+        for (let i=0; i < action.payload.length; i++) {
+          state.PlayerSquares[action.payload[i]].val = 'Carrier'
+        }
+      } else if (action.payload.length === 4) {
+        for (let i=0; i < action.payload.length; i++) {
+          state.PlayerSquares[action.payload[i]].val = 'BattleShip'
+        }
+      } else if (action.payload.length === 3) {
+        for (let i=0; i < action.payload.length; i++) {
+          state.PlayerSquares[action.payload[i]].val = 'Submarine'
+        }
+      } else if (action.payload.length === 2) {
+        for (let i=0; i < action.payload.length; i++) {
+          state.PlayerSquares[action.payload[i]].val = 'PatrolBoat'
+        }
       }
     },
     handleAttack: (state, action) => {

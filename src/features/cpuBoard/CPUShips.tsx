@@ -18,6 +18,7 @@ export const CPUShips = () => {
       return;
     } else {
       dispatch(handleAttack(squareID))
+      dispatch(setTurn())
     }
   }
 
@@ -27,7 +28,7 @@ export const CPUShips = () => {
     className="square hover:bg-blue-500" 
     onClick={() => handleClick(i.id)}
     >
-      {i.val}
+      {i.val === null ? null : i.val.length > 1 ? "•" : i.val}
     </div>
     )
 

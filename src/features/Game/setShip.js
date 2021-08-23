@@ -12,7 +12,7 @@ export const setShip = (length, currentState) => {
 
 const verticalCheck = (minSquare, maxSquare, squares) => {
   for (let i = minSquare; i <= maxSquare; i += 10) {
-    if (squares[i].val === "•") {
+    if (squares[i].val !== null) {
       return false;
     }
   } 
@@ -121,7 +121,7 @@ const setVerticalShip = (length, squaresSlice) => {
 const horizontalCheck = (minSquare, maxSquare, squares) => {
   
   for (let i = minSquare; i <= maxSquare; i ++) {
-    if (squares[i].val === "•") {
+    if (squares[i].val !== null) {
       return false;
     }
   } 
