@@ -1,14 +1,24 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { setTurn } from '../Game/gameSlice'
 import { handleAttack } from './cpuShipsSlice'
-
+import { useEffect, useState } from 'react'
 
 export const CPUShips = () => {
+  const [showShipsRemaining, setShowShipsRemaining] = useState(false)
   const squares = useAppSelector(state => state.cpuShips.CPUSquares)
   const attackCount = useAppSelector(state => state.cpuShips.numAttacks)
   const turn = useAppSelector(state => state.game.turn)
+  const inGame = useAppSelector(state => state.game.inGame)
 
   const dispatch = useAppDispatch()
+
+
+  useEffect(() => {
+    if (inGame === true && 
+      shipsArr().length === 0) {
+      alert("Player wins")
+    }
+  }, [])
 
   const handleClick = (squareID: string) => {
     let shotSquare = squares.find(i => i.id === squareID)
@@ -55,9 +65,12 @@ export const CPUShips = () => {
       </div>
       <p>Attack count: {attackCount}</p>
       <div>
-        Ships Remaining: {shipsArr().length}
-        <div>{shipsArr()}
+        <p onClick={() =>setShowShipsRemaining(!showShipsRemaining)}>Ships Remaining: {shipsArr().length} </p>
+        {showShipsRemaining &&
+          <div>
+          {shipsArr()}
         </div>
+        }
       </div>
     </div>
   )

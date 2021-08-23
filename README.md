@@ -5,13 +5,11 @@ A portfolio project, utilizing the following stack:
 React
 Redux
 Tailwind
-Cypress
+Jest
 TypeScript
-
 GraphQL
-Node.js
-Express
-Mongoose/MongoDB
+Mirage.js
+Create React App
 
 ## Rules
 Each player sets 5 ships on their board. These are:
