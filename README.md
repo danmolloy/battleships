@@ -76,5 +76,8 @@ PlayerShips:
 * show list of ships remaining
 * Turns
 * Declare winner/End game
-* Testing Testing Testing!
+
+
+* Jest testing
 * Connect to Dummy backend for highscores
+* CPU turn logic
