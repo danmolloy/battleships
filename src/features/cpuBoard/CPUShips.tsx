@@ -64,13 +64,14 @@ export const CPUShips = () => {
       <div className="inner-board">
         {renderedSquares}
       </div>
+      {turn !== null && 
       <BoardInfo 
         attackCount={attackCount} 
         showShipsRemaining={showShipsRemaining}
         squares={squares.slice()}
         showList={showShipsRemaining}
         showShips={() => setShowShipsRemaining(!showShipsRemaining)}
-      />
+      />}
     </div>
   )
 }

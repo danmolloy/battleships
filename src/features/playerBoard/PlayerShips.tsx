@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
-import { setPlayerShips, updateSquares, handleAttack } from './playerShipsSlice'
+import { setPlayerShips, updateSquares, handleAttack, AsyncMove } from './playerShipsSlice'
 import { setTurn } from '../Game/gameSlice'
 import { BoardInfo } from '../Game/BoardInfo'
 
@@ -20,16 +20,12 @@ export const PlayerShips = () => {
     </div>
     )
 
-  const handleShot = () => {
+  const handleShot = async() => {
     if (turn !== "CPU") {
       return;
     }
-    let randIndex = Math.floor(Math.random() * 100)
-    while (squares[randIndex].val === 'O' || squares[randIndex].val === "X") {
-      randIndex = Math.floor(Math.random() * 100)
-    }
-    dispatch(handleAttack(squares[randIndex].id))
-    dispatch(setTurn())
+      await(dispatch(AsyncMove()))
+      dispatch(setTurn())
   }
 
   const shipsArr = () => {
@@ -53,13 +49,13 @@ export const PlayerShips = () => {
       <div className="inner-board">
         {renderedSquares}
       </div>
-      <BoardInfo 
+      {turn !== null && <BoardInfo 
         attackCount={attackCount} 
         showShipsRemaining={showShipsRemaining}
         squares={squares.slice()}
         showList={showShipsRemaining}
         showShips={() => setShowShipsRemaining(!showShipsRemaining)}
-      />
+      />}
       <button onClick={handleShot}>Attack!</button>
     </div>
   )

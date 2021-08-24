@@ -79,5 +79,19 @@ PlayerShips:
 
 
 * Jest testing
-* Connect to Dummy backend for highscores
-* CPU turn logic
+* ReadMe
+
+## CSS
+[] Board Info
+[] HighScores
+[] outerboard stretch
+## CPU turn logic
+[] CPU takes turn on timeout
+[] CPU makes note if square is a hit
+[] CPU tries directions
+[] If ship sinks CPU tries new rand attack
+
+## High Scores
+[] On pressing start user enters username
+[] If winner, user's info submitted to backend
+[] Highscore table shown

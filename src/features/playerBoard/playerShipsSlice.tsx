@@ -1,14 +1,16 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, nanoid } from '@reduxjs/toolkit'
 import type { RootState, AppThunk } from '../../app/store'
 import { setShip } from '../Game/setShip'
 import { BoardInfo } from '../Game/BoardInfo'
+import { fetchMove } from './CPUMoves'
 
 
 interface PlayerBoardState {
   PlayerSquares: Array<{val: any, id: any}>,
   boardSet: boolean,
   numAttacks: number,
-  currentAttack: number[] | null
+  currentAttack: number[] | null,
+  CPUMove: 'idle'|'thinking' | 'complete',
 }
 
 const initialState: PlayerBoardState = {
@@ -20,9 +22,17 @@ const initialState: PlayerBoardState = {
   )),
   boardSet: false,
   numAttacks: 0,
-  currentAttack: null
+  currentAttack: null,
+  CPUMove: 'idle'
 }
 
+export const AsyncMove = createAsyncThunk(
+  'playerShips/fetchMove',
+  async () => {
+    const response = await fetchMove();
+    return response.data
+  }
+)
 
 export const playerShipsSlice = createSlice({
   name: 'playerShips',
@@ -69,6 +79,17 @@ export const playerShipsSlice = createSlice({
       }
       state.numAttacks += 1
     }
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(AsyncMove.pending, (state) => {
+        state.CPUMove = 'thinking';
+      })
+      .addCase(AsyncMove.fulfilled, (state, action) => {
+        state.CPUMove = 'complete';
+        const square = action.payload
+        state.PlayerSquares[square].val  = '!'
+      })
   }
 })
 
