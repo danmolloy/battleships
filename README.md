@@ -1,26 +1,25 @@
 # Battleships
 
-A portfolio project, utilizing the following stack:
-
-React
-Redux
-Tailwind
-Jest
-TypeScript
-GraphQL
-Mirage.js
-Create React App
+## Stack:
+- React
+- Redux
+- Tailwind
+- Jest
+- TypeScript
+- GraphQL
+- Mirage.js
+- Create React App
 
 ## Rules
-Each player sets 5 ships on their board. These are:
-Carrier (5)
-Battleship (4)
-Destroyer (4)
-Submarine (3)
-Patrol Boat (2)
 
-The ships are set on the board. They must not be touching (including corners).
-Players take turns attacking. If you hit a ship, you get another turn.
+Ships:
+1 x Carrier (5)
+1 x Battleship (4)
+1 x Destroyer (3)
+1 x Submarine (3)
+1 x Patrol Boat (2)
+
+Player and CPU take turns attacking. If you hit a ship, you get another turn.
 
 ## User stories
 [] On load page has a title 'Battleships'
@@ -42,51 +41,14 @@ Players take turns attacking. If you hit a ship, you get another turn.
 [] If > 30 shots, CPU makes more targeted shots.
 [] CPU ensures enough space for a ship.
 
-## State
-Game: 
-  inGame: bool
-  PlayersTurn: bool
-
-PlayerShips:  
-  squares: Array: null | X | O | <ship: string>(<size: number>)
-  boardSet: bool
-  shots: number
-  currentAttack: Array of numbers
-
-CpuShips: 
-  squares: null | X | O | <ship: string>(<size: number>)
-  boardSet: true/false,
-  shots: number
-
-## Board component
-CPUShips:
-* SetBoard
-* HandleClick
-* HandleRender 
-* Ships Remaining
-* Shots Taken
-* Shot Accuracy
-
-PlayerShips:
-* SetBoard
-* RandAttack
-* CurrentAttack
-
-
-* show list of ships remaining
-* Turns
-* Declare winner/End game
-
-
 * Jest testing
 * ReadMe
+* Take another shot if 'X'
+* Hide CPU ships
 
-## CSS
-[] Board Info
-[] HighScores
-[] outerboard stretch
 ## CPU turn logic
-[] CPU takes turn on timeout
+[] CPU takes turn automatically
+[] States if CPU is thinking
 [] CPU makes note if square is a hit
 [] CPU tries directions
 [] If ship sinks CPU tries new rand attack

@@ -7,9 +7,12 @@ import { BoardInfo } from '../Game/BoardInfo'
 
 export const PlayerShips = () => {
   const [showShipsRemaining, setShowShipsRemaining] = useState(false)
+
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
   const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
   const turn = useAppSelector((state: RootState) => state.game.turn)
+  const currentAttack = useAppSelector((state: RootState) => state.playerShips.currentAttack)
+
   const dispatch = useAppDispatch()
 
 
@@ -25,7 +28,7 @@ export const PlayerShips = () => {
       return;
     }
       await(dispatch(AsyncMove()))
-      dispatch(setTurn())
+      // dispatch(setTurn())
   }
 
   const shipsArr = () => {
@@ -56,6 +59,7 @@ export const PlayerShips = () => {
         showList={showShipsRemaining}
         showShips={() => setShowShipsRemaining(!showShipsRemaining)}
       />}
+      {currentAttack}
       <button onClick={handleShot}>Attack!</button>
     </div>
   )

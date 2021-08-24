@@ -9,7 +9,7 @@ interface PlayerBoardState {
   PlayerSquares: Array<{val: any, id: any}>,
   boardSet: boolean,
   numAttacks: number,
-  currentAttack: number[] | null,
+  currentAttack: number[],
   CPUMove: 'idle'|'thinking' | 'complete',
 }
 
@@ -22,14 +22,17 @@ const initialState: PlayerBoardState = {
   )),
   boardSet: false,
   numAttacks: 0,
-  currentAttack: null,
+  currentAttack: [],
   CPUMove: 'idle'
 }
 
 export const AsyncMove = createAsyncThunk(
   'playerShips/fetchMove',
-  async () => {
-    const response = await fetchMove();
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState() as RootState
+    const attackArr = state.playerShips.currentAttack
+    const board = state.playerShips.PlayerSquares
+    const response = await fetchMove(board, attackArr);
     return response.data
   }
 )
@@ -88,7 +91,14 @@ export const playerShipsSlice = createSlice({
       .addCase(AsyncMove.fulfilled, (state, action) => {
         state.CPUMove = 'complete';
         const square = action.payload
-        state.PlayerSquares[square].val  = '!'
+        if (state.PlayerSquares[square].val !== null) {
+          state.PlayerSquares[square].val = 'X'
+          state.currentAttack.push(square);
+          state.currentAttack.sort()
+        } else {
+          state.PlayerSquares[square].val = 'O'
+        }
+        state.numAttacks += 1
       })
   }
 })
