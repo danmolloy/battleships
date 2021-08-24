@@ -20,7 +20,7 @@ export const BoardInfo = (props: any) => {
       <div>
         <div onClick={() => props.showShips()}>
           <div>
-            <p>Ships Remaining: </p>
+            <p>Ships Remaining: {shipsArr(props.squares).length}</p>
             {props.showList ?
             <i className="up-arrow"></i>  : 
             <i className="down-arrow"></i>}

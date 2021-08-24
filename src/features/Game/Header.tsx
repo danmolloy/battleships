@@ -28,7 +28,7 @@ export const Header = () => {
       className="py-2 px-4 bg-green-500 
         text-white font-semibold rounded-lg 
         shadow-md hover:bg-green-600 focus:outline-none 
-        focus:ring-2 focus:ring-green-400 focus:ring-opacity-75"
+        focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 m-1"
         onClick={handleClick}
       >
         {inGame === 'idle' ? 'Start' : inGame ? 'Pause' : 'Resume'}
@@ -37,7 +37,7 @@ export const Header = () => {
       className="py-2 px-4 bg-gray-200 
       text-gray-500 font-semibold rounded-lg 
       shadow-md hover:bg-gray-300 focus:outline-none 
-      focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75"
+      focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 m-1"
       onClick={() => setShowScores(!showScores)}
       >
         High Scores
