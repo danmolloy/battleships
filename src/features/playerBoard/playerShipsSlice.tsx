@@ -1,6 +1,7 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit'
 import type { RootState, AppThunk } from '../../app/store'
 import { setShip } from '../Game/setShip'
+import { BoardInfo } from '../Game/BoardInfo'
 
 
 interface PlayerBoardState {

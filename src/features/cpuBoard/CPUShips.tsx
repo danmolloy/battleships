@@ -2,6 +2,7 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { setTurn } from '../Game/gameSlice'
 import { handleAttack } from './cpuShipsSlice'
 import { useEffect, useState } from 'react'
+import { BoardInfo } from '../Game/BoardInfo'
 
 export const CPUShips = () => {
   const [showShipsRemaining, setShowShipsRemaining] = useState(false)
@@ -63,15 +64,13 @@ export const CPUShips = () => {
       <div className="inner-board">
         {renderedSquares}
       </div>
-      <p>Attack count: {attackCount}</p>
-      <div>
-        <p onClick={() =>setShowShipsRemaining(!showShipsRemaining)}>Ships Remaining: {shipsArr().length} </p>
-        {showShipsRemaining &&
-          <div>
-          {shipsArr()}
-        </div>
-        }
-      </div>
+      <BoardInfo 
+        attackCount={attackCount} 
+        showShipsRemaining={showShipsRemaining}
+        squares={squares.slice()}
+        showList={showShipsRemaining}
+        showShips={() => setShowShipsRemaining(!showShipsRemaining)}
+      />
     </div>
   )
 }

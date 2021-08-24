@@ -3,8 +3,10 @@ import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
 import { setPlayerShips, updateSquares, handleAttack } from './playerShipsSlice'
 import { setTurn } from '../Game/gameSlice'
+import { BoardInfo } from '../Game/BoardInfo'
 
 export const PlayerShips = () => {
+  const [showShipsRemaining, setShowShipsRemaining] = useState(false)
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
   const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
   const turn = useAppSelector((state: RootState) => state.game.turn)
@@ -51,12 +53,13 @@ export const PlayerShips = () => {
       <div className="inner-board">
         {renderedSquares}
       </div>
-      <p>Attack count: {attackCount}</p>
-      <div>
-        Ships Remaining: {shipsArr().length}
-        <div>{shipsArr()}
-        </div>
-      </div>
+      <BoardInfo 
+        attackCount={attackCount} 
+        showShipsRemaining={showShipsRemaining}
+        squares={squares.slice()}
+        showList={showShipsRemaining}
+        showShips={() => setShowShipsRemaining(!showShipsRemaining)}
+      />
       <button onClick={handleShot}>Attack!</button>
     </div>
   )

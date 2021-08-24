@@ -14,6 +14,14 @@
   @apply h-5 w-5 bg-blue-300 m-1;
 }
 
+.down-arrow {
+  @apply border-solid border-black border-t-0 border-r-2 border-b-2 border-l-0 inline-block px-1 py-1 transform rotate-45;
+}
+
+.up-arrow {
+  @apply border-solid border-black border-t-0 border-r-2 border-b-2 border-l-0 inline-block px-1 py-1 transform rotate-180;
+}
+
 @layer base {
   h1 {
     @apply text-3xl;
