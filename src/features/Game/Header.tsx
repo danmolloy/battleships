@@ -18,7 +18,13 @@ export const Header = () => {
     if (inGame === 'ended') {
       setShowScores(true)
       setButton('Reset')
-    } 
+    } else if (inGame === 'playing') {
+      setButton('Pause')
+    } else if (inGame === 'idle') {
+      setButton('Start')
+    } else if (inGame === 'paused') {
+      setButton('Resume')
+    }
   })
 
   const handleClick = () => {
@@ -27,18 +33,14 @@ export const Header = () => {
       dispatch(setPlayerShips())
       dispatch(setTurn())
       dispatch(toggleInGame('playing'))
-      setButton('Pause')
     } else if (inGame === 'playing') {
       dispatch(toggleInGame('paused'))
-      setButton('Resume')
     } else if (inGame === 'paused') {
       dispatch(toggleInGame('playing'))
-      setButton('Pause')
     } else if (inGame === 'ended') {
       dispatch(resetCPUBoard())
       dispatch(resetPlayerBoard())
       dispatch(toggleInGame('idle'))
-      setButton('Start')
       setShowScores(false)
     }
   }
