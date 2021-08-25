@@ -1,5 +1,19 @@
+import { useEffect } from "react"
+import { useAppSelector, useAppDispatch } from '../../app/hooks'
+import { toggleInGame } from '../Game/gameSlice'
+
 export const BoardInfo = (props: any) => {
+  const inGame = useAppSelector(state => state.game.inGame)
+  const CPUOrPlayer = props.whoAmI
+  const dispatch = useAppDispatch()
   
+  useEffect(() => {
+    if (inGame === 'playing' && shipsArr(props.squares).length === 0) {
+      alert(`${CPUOrPlayer} wins`)
+      dispatch(toggleInGame('ended'))
+    }
+  })
+
   const shipsArr = (squares: any) => {
     let arr: string[] = []
     for (let i = 0; i < squares.length; i++) {

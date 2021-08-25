@@ -5,7 +5,7 @@ export const fetchMove = (board: Array<{val: any, id: any}>, attackArr: number[]
   );
   } else {
     return new Promise<{ data: number }>((resolve) => 
-    setTimeout(() => resolve({ data: randAttack(board)}), 500)
+    setTimeout(() => resolve({ data: randAttack(board)}), 1000)
   );
   }
 }
@@ -54,24 +54,26 @@ const targetedAttack = (board: Array<{val: any, id: any}>, attackArr: Array<numb
       loopCount++
     }
   } else {
-    while (loopCount < 10)
-    if (attackArr[1] - attackArr[0] === 10) { 
-      let nextAttack = attackArr[attackArr.length - 1] + 10 // South
-      if (board[nextAttack].val !== 'O' && 
-      board[nextAttack].val !== 'X' &&
-      nextAttack <= 99) {
-        return nextAttack
-      } else { // North
-        return attackArr[0] - 10;
-      } 
-    } else {
-      let nextAttack = attackArr[attackArr.length - 1] + 1
-      if (board[nextAttack].val !== 'O' && 
-      board[nextAttack].val !== 'X' &&
-      nextAttack % 10 != 10) {
-        return nextAttack
+    while (loopCount < 10) {
+      loopCount++
+      if (attackArr[1] - attackArr[0] === 10) { 
+        let nextAttack = attackArr[attackArr.length - 1] + 10 // South
+        if (board[nextAttack].val !== 'O' && 
+        board[nextAttack].val !== 'X' &&
+        nextAttack <= 99) {
+          return nextAttack
+        } else { // North
+          return attackArr[0] - 10;
+        } 
       } else {
-        return attackArr[0] - 1;
+        let nextAttack = attackArr[attackArr.length - 1] + 1
+        if (board[nextAttack].val !== 'O' && 
+        board[nextAttack].val !== 'X' &&
+        nextAttack % 10 != 10) {
+          return nextAttack
+        } else {
+          return attackArr[0] - 1;
+        } 
       } 
     }
   }

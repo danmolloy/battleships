@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 
 interface GameState {
-  inGame: boolean | 'idle',
+  inGame: 'playing' | 'idle' | 'paused' | 'ended'
   turn: "CPU" | "Player" | null
 }
 
@@ -15,13 +15,8 @@ export const gameSlice = createSlice({
   name: 'game',
   initialState,
   reducers: {
-    toggleInGame: state => {
-      if (state.inGame === 'idle' || 
-        state.inGame === false) {
-        state.inGame = true
-      } else if (state.inGame === true) {
-        state.inGame = false
-      }
+    toggleInGame: (state, action) => {
+      state.inGame = action.payload
     },
     setTurn: state => {
       if (state.turn === null || 

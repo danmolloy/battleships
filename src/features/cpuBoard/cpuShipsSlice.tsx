@@ -64,6 +64,14 @@ export const cpuShipsSlice = createSlice({
         square.val = 'X'
       }
       state.numAttacks += 1
+    },
+    resetCPUBoard: (state) => {
+      state.CPUSquares = new Array(100).fill(null).map(i => (
+        i = {
+          id: nanoid(),
+          val: null
+        }
+      ))
     }
   }
 })
@@ -87,5 +95,5 @@ export const setCPUShips = (): AppThunk => (
   dispatch(updateSquares(setShip(2, currentBoard)))
 }
 
-export const { handleAttack, updateSquares } = cpuShipsSlice.actions
+export const { handleAttack, updateSquares, resetCPUBoard } = cpuShipsSlice.actions
 export default cpuShipsSlice.reducer

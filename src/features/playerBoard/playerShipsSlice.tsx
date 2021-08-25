@@ -86,6 +86,14 @@ export const playerShipsSlice = createSlice({
     },
     setCPUMove: (state, action) => {
       state.CPUMove = action.payload
+    },
+    resetPlayerBoard: (state) => {
+      state.PlayerSquares = new Array(100).fill(null).map(i => (
+        i = {
+          id: nanoid(),
+          val: null
+        }
+      ))
     }
   },
   extraReducers: (builder) => {
@@ -131,5 +139,5 @@ export const setPlayerShips = (): AppThunk => (
   dispatch(updateSquares(setShip(2, currentBoard)))
 }
 
-export const { updateSquares, setCPUMove }  = playerShipsSlice.actions
+export const { updateSquares, setCPUMove, resetPlayerBoard }  = playerShipsSlice.actions
 export default playerShipsSlice.reducer

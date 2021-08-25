@@ -1,30 +1,51 @@
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { toggleInGame, setTurn } from './gameSlice'
 import { useState, useEffect } from 'react'
-import { setPlayerShips } from '../playerBoard/playerShipsSlice'
-import { setCPUShips } from '../cpuBoard/cpuShipsSlice'
+import { setPlayerShips, resetPlayerBoard } from '../playerBoard/playerShipsSlice'
+import { setCPUShips, resetCPUBoard } from '../cpuBoard/cpuShipsSlice'
 import { HighScores } from './HighScores.js'
 
 export const Header = () => {
   const [showScores, setShowScores] = useState(false)
+  const [button, setButton] = useState('Start')
 
   const turn = useAppSelector(state => state.game.turn)
   const inGame = useAppSelector(state => state.game.inGame)
 
   const dispatch = useAppDispatch()
 
+  useEffect(() => {
+    if (inGame === 'ended') {
+      setShowScores(true)
+      setButton('Reset')
+    } 
+  })
+
   const handleClick = () => {
     if (inGame === 'idle') {
       dispatch(setCPUShips())
       dispatch(setPlayerShips())
       dispatch(setTurn())
+      dispatch(toggleInGame('playing'))
+      setButton('Pause')
+    } else if (inGame === 'playing') {
+      dispatch(toggleInGame('paused'))
+      setButton('Resume')
+    } else if (inGame === 'paused') {
+      dispatch(toggleInGame('playing'))
+      setButton('Pause')
+    } else if (inGame === 'ended') {
+      dispatch(resetCPUBoard())
+      dispatch(resetPlayerBoard())
+      dispatch(toggleInGame('idle'))
+      setButton('Start')
+      setShowScores(false)
     }
-    dispatch(toggleInGame())
   }
 
   return (
     <div className="header m-3" id="header">
-      <h1>{turn === null ? "Battleships" :`${turn} turn`}</h1>
+      <h1>{inGame === 'ended' || inGame === 'idle' ? "Battleships" :`${turn} turn`}</h1>
       <div className="flex flex-col">
       <button id="status-btn" 
       className="py-2 px-4 bg-green-500 
@@ -33,7 +54,7 @@ export const Header = () => {
         focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 m-1"
         onClick={handleClick}
       >
-        {inGame === 'idle' ? 'Start' : inGame ? 'Pause' : 'Resume'}
+        {button}
       </button>
       <button
       className="py-2 px-4 bg-gray-200 

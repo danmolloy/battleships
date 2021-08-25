@@ -15,7 +15,7 @@ export const CPUShips = () => {
 
 
   useEffect(() => {
-    if (inGame === true && 
+    if (inGame === 'playing' && 
       shipsArr().length === 0) {
       alert("Player wins")
     }
@@ -25,7 +25,8 @@ export const CPUShips = () => {
     let shotSquare = squares.find(i => i.id === squareID)
     if (turn !== "Player" || 
       shotSquare?.val === 'O' ||
-      shotSquare?.val === 'X') {
+      shotSquare?.val === 'X' ||
+      inGame !== 'playing') {
       return;
     } else {
       dispatch(handleAttack(squareID))
@@ -39,7 +40,7 @@ export const CPUShips = () => {
     className="square hover:bg-blue-500" 
     onClick={() => handleClick(i.id)}
     >
-      {i.val === null ? null : i.val.length > 1 ? "•" : i.val}
+      {i.val === null ? null : i.val.length > 1 ? null : i.val}
     </div>
     )
   
@@ -71,6 +72,7 @@ export const CPUShips = () => {
         squares={squares.slice()}
         showList={showShipsRemaining}
         showShips={() => setShowShipsRemaining(!showShipsRemaining)}
+        whoAmI="Player"
       />}
     </div>
   )

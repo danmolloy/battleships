@@ -13,11 +13,12 @@ export const PlayerShips = () => {
   const turn = useAppSelector((state: RootState) => state.game.turn)
   const currentAttack = useAppSelector((state: RootState) => state.playerShips.currentAttack)
   const CPUMove = useAppSelector((state: RootState) => state.playerShips.CPUMove)
+  const inGame = useAppSelector((state: RootState) => state.game.inGame)
 
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    if (turn === "CPU" && CPUMove === "idle") {
+    if (turn === "CPU" && CPUMove === "idle" && inGame === "playing") {
       handleShot()      
     } else if (CPUMove === "complete") {
       dispatch(setCPUMove('idle'))
@@ -52,6 +53,7 @@ export const PlayerShips = () => {
         squares={squares.slice()}
         showList={showShipsRemaining}
         showShips={() => setShowShipsRemaining(!showShipsRemaining)}
+        whoAmI="CPU"
       />}
     </div>
   )
