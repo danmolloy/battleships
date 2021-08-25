@@ -4,6 +4,17 @@ import { setShip } from '../Game/setShip'
 import { BoardInfo } from '../Game/BoardInfo'
 import { fetchMove } from './CPUMoves'
 
+const shipArr = (arr: Array<{val: any, id: any}>) => {
+  let returnArr: Array<string> = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].val !== null && 
+      arr[i].val.length > 1 && 
+      !returnArr.includes(arr[i].val)) {
+        returnArr.push(arr[i].val)
+      }
+  } return returnArr;
+}
+
 
 interface PlayerBoardState {
   PlayerSquares: Array<{val: any, id: any}>,
@@ -90,11 +101,16 @@ export const playerShipsSlice = createSlice({
       })
       .addCase(AsyncMove.fulfilled, (state, action) => {
         state.CPUMove = 'complete';
+        const initialShipCount = shipArr(state.PlayerSquares)
         const square = action.payload
         if (state.PlayerSquares[square].val !== null) {
           state.PlayerSquares[square].val = 'X'
-          state.currentAttack.push(square);
-          state.currentAttack.sort()
+          if (shipArr(state.PlayerSquares).length === initialShipCount.length) {
+            state.currentAttack.push(square);
+            state.currentAttack.sort()
+          } else {
+            state.currentAttack = []
+          }
         } else {
           state.PlayerSquares[square].val = 'O'
         }

@@ -7,8 +7,10 @@ import { HighScores } from './HighScores.js'
 
 export const Header = () => {
   const [showScores, setShowScores] = useState(false)
+
   const turn = useAppSelector(state => state.game.turn)
   const inGame = useAppSelector(state => state.game.inGame)
+
   const dispatch = useAppDispatch()
 
   const handleClick = () => {
@@ -22,7 +24,7 @@ export const Header = () => {
 
   return (
     <div className="header m-3" id="header">
-      <h1>{turn === null ? "Battleships" : `${turn} turn`}</h1>
+      <h1>{turn === null ? "Battleships" :`${turn} turn`}</h1>
       <div className="flex flex-col">
       <button id="status-btn" 
       className="py-2 px-4 bg-green-500 
