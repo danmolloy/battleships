@@ -84,14 +84,8 @@ export const playerShipsSlice = createSlice({
         }
       }
     },
-    handleAttack: (state, action) => {
-      const square = state.PlayerSquares.find(square => square.id === action.payload)
-      if (square?.val === null) {
-        square.val = 'O'
-      } else if (square?.val !== null && square !== undefined) {
-        square.val = 'X'
-      }
-      state.numAttacks += 1
+    setCPUMove: (state, action) => {
+      state.CPUMove = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -100,7 +94,6 @@ export const playerShipsSlice = createSlice({
         state.CPUMove = 'thinking';
       })
       .addCase(AsyncMove.fulfilled, (state, action) => {
-        state.CPUMove = 'complete';
         const initialShipCount = shipArr(state.PlayerSquares)
         const square = action.payload
         if (state.PlayerSquares[square].val !== null) {
@@ -115,6 +108,7 @@ export const playerShipsSlice = createSlice({
           state.PlayerSquares[square].val = 'O'
         }
         state.numAttacks += 1
+        state.CPUMove = 'complete';
       })
   }
 })
@@ -137,5 +131,5 @@ export const setPlayerShips = (): AppThunk => (
   dispatch(updateSquares(setShip(2, currentBoard)))
 }
 
-export const { updateSquares, handleAttack }  = playerShipsSlice.actions
+export const { updateSquares, setCPUMove }  = playerShipsSlice.actions
 export default playerShipsSlice.reducer

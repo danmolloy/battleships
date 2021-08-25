@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { RootState } from '../../app/store'
-import { setPlayerShips, updateSquares, handleAttack, AsyncMove } from './playerShipsSlice'
+import { AsyncMove, setCPUMove } from './playerShipsSlice'
 import { setTurn } from '../Game/gameSlice'
 import { BoardInfo } from '../Game/BoardInfo'
 
@@ -12,8 +12,17 @@ export const PlayerShips = () => {
   const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
   const turn = useAppSelector((state: RootState) => state.game.turn)
   const currentAttack = useAppSelector((state: RootState) => state.playerShips.currentAttack)
+  const CPUMove = useAppSelector((state: RootState) => state.playerShips.CPUMove)
 
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (turn === "CPU" && CPUMove === "idle") {
+      handleShot()      
+    } else if (CPUMove === "complete") {
+      dispatch(setCPUMove('idle'))
+    }
+  })
 
 
   const renderedSquares = squares.map(i => 
@@ -28,23 +37,8 @@ export const PlayerShips = () => {
       return;
     }
       await(dispatch(AsyncMove()))
-      // dispatch(setTurn())
+      dispatch(setTurn())
   }
-
-  const shipsArr = () => {
-    let arr: string[] = []
-    for (let i = 0; i < squares.length; i++) {
-      if (squares[i].val !== null &&
-          squares[i].val.length > 1 &&
-          !arr.includes(squares[i].val)
-        ) {
-          arr.push(squares[i].val)
-        }
-    } 
-    arr.sort()
-    return arr.map(i => <p>{i}</p>)
-  }  
-
 
   return (
     <div className="outer-board" id="player-ships">
@@ -59,8 +53,6 @@ export const PlayerShips = () => {
         showList={showShipsRemaining}
         showShips={() => setShowShipsRemaining(!showShipsRemaining)}
       />}
-      {currentAttack}
-      <button onClick={handleShot}>Attack!</button>
     </div>
   )
 }
