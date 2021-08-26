@@ -2,7 +2,7 @@ import { createSlice, nanoid } from '@reduxjs/toolkit'
 import type { RootState, AppThunk } from '../../app/store'
 import { setShip } from '../Game/setShip'
 
-interface CPUBoardState {
+export interface CPUBoardState {
   CPUSquares: Array<{val: any, id: any}>,
   boardSet: boolean,
   numAttacks: number

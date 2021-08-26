@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 
-interface GameState {
+export interface GameState {
   inGame: 'playing' | 'idle' | 'paused' | 'ended'
   turn: "CPU" | "Player" | null
 }

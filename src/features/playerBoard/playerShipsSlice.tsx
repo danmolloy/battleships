@@ -16,7 +16,7 @@ const shipArr = (arr: Array<{val: any, id: any}>) => {
 }
 
 
-interface PlayerBoardState {
+export interface PlayerBoardState {
   PlayerSquares: Array<{val: any, id: any}>,
   boardSet: boolean,
   numAttacks: number,
