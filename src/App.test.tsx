@@ -1,13 +1,23 @@
-import { render } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import App from './App';
+import { makeServer } from './Server'
+import { unmountComponentAtNode } from 'react-dom';
 
-test('renders title', () => {
-  const { getByText } = render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
-    expect(getByText(/battleships/i)).toBeInTheDocument()
+let container: any = null
+beforeEach(() => {
+  container = document.createElement("div")
+  document.body.appendChild(container)
 });
+
+afterEach(() => {
+  unmountComponentAtNode(container);
+  container.remove()
+  container = null
+
+})
+
+describe('renders App', () => {
+  it('contains title', () => {})
+})

@@ -1,59 +1,47 @@
 # Battleships
 
-## Stack:
-- React
-- Redux
-- Tailwind
-- Jest
-- TypeScript
-- GraphQL
-- Mirage.js
-- Create React App
+Play against the computer in the classic game of Battleships.
 
 ## Rules
+Upon clicking Start, the boards are both rendered with following ships:
 
-Ships:
 1 x Carrier (5)
 1 x Battleship (4)
 1 x Destroyer (3)
 1 x Submarine (3)
 1 x Patrol Boat (2)
 
-Player and CPU take turns attacking. If you hit a ship, you get another turn.
+They cannot be touching another ship (including a diagonal square).
 
-## User stories
-[] On load page has a title 'Battleships'
-[] There is a status component. On load this is a start button.
-[] There are two boards. One is titled 'Player Ships' and the other 'CPU Ships'.
-[] The boards are 10 * 10. They are div elements.
-[] On load there are ships already rendered in the Player board. 
-[] Below each board, one can see how many shots have been fired and what ships are remaining. 
+Player can see their ships which the CPU is attacking (represented with '•' on the 'Player Ships' board). However, like the classic rules, the player cannot see the ships they are attacking (on the 'CPU Ships' board).
 
-[] Clicking start, the button turns into a pause button. The title turns into a status ie 'CPU turn'
-[] Hit accuracy % shown
+## CPU turns
+The CPU is unaware of where the player's ships are set. It will take random shots until it hits a ship. At this point, it will log where that square is. Just like a human player, it will try the squares in various directions until it learns the direction the ship is sitting. Once again, just like a human player, the CPU is notified when the ship under attack sinks and reverts to random attacks. 
 
-## CPU turns 
-[] If no current targeted attacks, CPU takes random shots.
-[] If hit, CPU records the square number.
-[] On next turn, CPU tries squares around it. 
-[] If a hit, CPU continues in that direction.
-[] CPU knows when a ship has been sunk. Targeted attack complete and revert to random.
-[] If > 30 shots, CPU makes more targeted shots.
-[] CPU ensures enough space for a ship.
+## Features
+Like many games, a player can view the highscores of past players.
 
-* Jest testing
-* ReadMe
-* Take another shot if 'X'
-* Hide CPU ships
+There is a small amount of useful information for the player to peruse while playing, i.e. the ships remaining and number of attacks taken.
 
-## CPU turn logic
-[] CPU takes turn automatically
-[] States if CPU is thinking
-[] CPU makes note if square is a hit
-[] CPU tries directions
-[] If ship sinks CPU tries new rand attack
+## Stack:
+- React
+- Redux
+- Tailwind
+- Jest
+- TypeScript
+- Mirage.js
+- Create React App
 
-## High Scores
-[] On pressing start user enters username
-[] If winner, user's info submitted to backend
-[] Highscore table shown
+In planning this game, it quickly became apparent that it would be easiest to handle state with redux. I divided the game into three categories:
+* Game: handles who's turn it is, whether game is in play and highscores
+* CPU board: handles setting CPU ship's, handling player's moves and their progress in game (number of moves made, ships remaining).
+* Player board: handles setting Player ships, CPU attack logic and the CPU progress in game.
+
+I initially had considered minimizing code by combining CPU and Player board slices, but decided the more verbose approach brings clarity. 
+
+The highscores a fetched from a mock backend created with Miragejs. I felt it a nice touch to what would otherwise be a purely frontend project.
+
+The project is my first with TypeScript. As one will see, I'm still getting familiar with it. I'm following the handbook's suggestion of initially seeing how little I need, although I may have taken this advice too far!
+
+I used tailwind for the styling, which I chose to keep as minimal as possible.
+

@@ -1,4 +1,20 @@
+import { act, render } from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
 import gameReducer, { toggleInGame, setTurn, GameState } from './gameSlice'
+import { HighScores } from './HighScores'
+import { Header } from './Header'
+
+let container: any = null;
+beforeEach(() => {
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
+
+afterEach(() => {
+  unmountComponentAtNode(container)
+  container.remove();
+  container = null;
+});
 
 describe('game reducer', () => {
   const initialState: GameState = {
@@ -24,3 +40,4 @@ describe('game reducer', () => {
   })
 
 });
+

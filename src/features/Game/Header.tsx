@@ -47,7 +47,7 @@ export const Header = () => {
 
   return (
     <div className="header m-3" id="header">
-      <h1>{inGame === 'ended' || inGame === 'idle' ? "Battleships" :`${turn} turn`}</h1>
+      <h1 id="title">{inGame === 'ended' || inGame === 'idle' ? "Battleships" :`${turn} turn`}</h1>
       <div className="flex flex-col">
       <button id="status-btn" 
       className="py-2 px-4 bg-green-500 
