@@ -3,7 +3,7 @@
 Play against the computer in the classic game of Battleships.
 
 ## Rules
-Upon clicking Start, the boards are both rendered with following ships:
+Upon clicking Start, the boards are both rendered with following ships (the bracketed number is the number of squares long it is):
 
 1 x Carrier (5)
 1 x Battleship (4)
@@ -11,12 +11,16 @@ Upon clicking Start, the boards are both rendered with following ships:
 1 x Submarine (3)
 1 x Patrol Boat (2)
 
-They cannot be touching another ship (including a diagonal square).
+The ships may be horizontal or vertical. They cannot be touching another ship (including a diagonal square).
 
-Player can see their ships which the CPU is attacking (represented with '•' on the 'Player Ships' board). However, like the classic rules, the player cannot see the ships they are attacking (on the 'CPU Ships' board).
+Player can see their ships which the CPU is attacking (represented with '•' on the 'Player Ships' board). However, like the classic rules, the player cannot see the ships they are attacking (on the 'CPU Ships' board). 
+
+'X' represents a hit, whereas 'O' is a miss. 
 
 ## CPU turns
 The CPU is unaware of where the player's ships are set. It will take random shots until it hits a ship. At this point, it will log where that square is. Just like a human player, it will try the squares in various directions until it learns the direction the ship is sitting. Once again, just like a human player, the CPU is notified when the ship under attack sinks and reverts to random attacks. 
+
+There is a small interval before CPU makes a turn to make it seem more authentic.
 
 ## Features
 Like many games, a player can view the highscores of past players.
