@@ -34,7 +34,7 @@ There is a small amount of useful information for the player to peruse while pla
 - Mirage.js
 - Create React App
 
-In planning this game, it quickly became apparent that it would be easiest to handle state with redux. I divided the game into three categories:
+In planning this game, it quickly became apparent that it would be easiest to handle state with redux. I divided the state into three categories:
 * Game: handles who's turn it is, whether game is in play and highscores
 * CPU board: handles setting CPU ship's, handling player's moves and their progress in game (number of moves made, ships remaining).
 * Player board: handles setting Player ships, CPU attack logic and the CPU progress in game.
