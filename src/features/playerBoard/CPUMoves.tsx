@@ -46,7 +46,7 @@ const targetedAttack = (board: Array<{val: any, id: any}>, attackArr: Array<numb
       } else if (nextAttack === 3) { // West
         if (board[square - 1].val !== 'O' && 
         board[square - 1].val !== 'X' &&
-        square % 10 != 9) {
+        square % 10 !== 9) {
           return square - 1
         } 
       }
@@ -69,7 +69,7 @@ const targetedAttack = (board: Array<{val: any, id: any}>, attackArr: Array<numb
         let nextAttack = attackArr[attackArr.length - 1] + 1
         if (board[nextAttack].val !== 'O' && 
         board[nextAttack].val !== 'X' &&
-        nextAttack % 10 != 10) {
+        nextAttack % 10 !== 10) {
           return nextAttack
         } else {
           return attackArr[0] - 1;

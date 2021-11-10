@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react'
 import { setPlayerShips, resetPlayerBoard } from '../playerBoard/playerShipsSlice'
 import { setCPUShips, resetCPUBoard } from '../cpuBoard/cpuShipsSlice'
 import { HighScores } from './HighScores.js'
+import { Instructions } from './Instructions'
 
 export const Header = () => {
+  const [showInstructions, setShowInstructions] = useState(false)
   const [showScores, setShowScores] = useState(false)
   const [button, setButton] = useState('Start')
 
@@ -58,6 +60,12 @@ export const Header = () => {
       >
         {button}
       </button>
+      <button onClick={() => setShowInstructions(!showInstructions)} className="py-2 px-4 bg-blue-500 
+      text-white font-semibold rounded-lg 
+      shadow-md hover:bg-blue-600 focus:outline-none 
+      focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 m-1">
+        Instructions
+      </button>
       <button
       className="py-2 px-4 bg-gray-200 
       text-gray-500 font-semibold rounded-lg 
@@ -68,6 +76,8 @@ export const Header = () => {
         High Scores
       </button>
       </div>
+      {showInstructions &&
+      <Instructions />}
       {showScores &&
       <HighScores />}
     </div>
