@@ -6,7 +6,7 @@ As with human players, CPU is unaware of where the player's ships are set. It wi
 ### View and submit highscores
 There is a mock backend created using MirageJS. You can view highscores at any time. At the end of the game you can submit your score.
 
-### Instructions
+### Instructions
 Concise game instructions for those who are new to the game.
 
 ### In game information 
