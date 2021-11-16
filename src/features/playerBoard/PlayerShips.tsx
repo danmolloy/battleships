@@ -6,12 +6,11 @@ import { setTurn } from '../Game/gameSlice'
 import { BoardInfo } from '../Game/BoardInfo'
 
 export const PlayerShips = () => {
-  const [showShipsRemaining, setShowShipsRemaining] = useState(false)
+  const [showShipsRemaining, setShowShipsRemaining] = useState(true)
 
   const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
   const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
   const turn = useAppSelector((state: RootState) => state.game.turn)
-  const currentAttack = useAppSelector((state: RootState) => state.playerShips.currentAttack)
   const CPUMove = useAppSelector((state: RootState) => state.playerShips.CPUMove)
   const inGame = useAppSelector((state: RootState) => state.game.inGame)
 
@@ -28,7 +27,7 @@ export const PlayerShips = () => {
 
   const renderedSquares = squares.map(i => 
     <div key={i.id} 
-    className="square">
+    className={i.val === "X" ? "square-hit" :"square"}>
       {i.val === null ? null : i.val.length > 1 ? "•" : i.val}
     </div>
     )
@@ -42,7 +41,7 @@ export const PlayerShips = () => {
   }
 
   return (
-    <div className="outer-board" id="player-ships">
+    <div className="outer-board pb-1" id="player-ships">
       <h3>Player Ships</h3>
       <div className="inner-board">
         {renderedSquares}

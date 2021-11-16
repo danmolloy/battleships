@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { BoardInfo } from '../Game/BoardInfo'
 
 export const CPUShips = () => {
-  const [showShipsRemaining, setShowShipsRemaining] = useState(false)
+  const [showShipsRemaining, setShowShipsRemaining] = useState(true)
   const squares = useAppSelector(state => state.cpuShips.CPUSquares)
   const attackCount = useAppSelector(state => state.cpuShips.numAttacks)
   const turn = useAppSelector(state => state.game.turn)
@@ -37,7 +37,7 @@ export const CPUShips = () => {
   const renderedSquares = squares.map(i => 
     <div 
     key={i.id} 
-    className="square hover:bg-blue-500" 
+    className={i.val === "X" ? "square-hit": i.val === "O" ? "square" :"square hover:bg-blue-500"} 
     onClick={() => handleClick(i.id)}
     >
       {i.val === null ? null : i.val.length > 1 ? null : i.val}
@@ -60,7 +60,7 @@ export const CPUShips = () => {
 
  
   return (
-    <div className="outer-board" id="cpu-ships">
+    <div className="outer-board pb-1" id="cpu-ships">
       <h3>CPU Ships</h3>
       <div className="inner-board">
         {renderedSquares}
