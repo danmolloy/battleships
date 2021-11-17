@@ -7,9 +7,8 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import { makeServer } from "./Server.js"
 
-if (process.env.NODE_ENV === "development") {
-  makeServer({ environment: "development" })
-}
+makeServer({ environment: "development" })
+
 
 ReactDOM.render(
   <React.StrictMode>
