@@ -11,10 +11,10 @@ export const instructionsContent = [
   1 x Battleship (••••) \n
   1 x Destroyer (•••) \n
   1 x Submarine (•••) \n
-  1 x Patrol Boat (••) \n
-  Each player can only see their own ships.`,
+  1 x Patrol Boat (••) \n`,
   `Players take turns attacking their opponents board, attempting to hit a ship. \n
-  A hit is represented by X, a miss is O.`,
+  A hit is represented by X, a miss is O. \n
+  Each player can only see their own ships.`,
   `If you hit, try the squares around that square to sink the entire ship. \n
   The ships may be horizontal or vertical. They cannot be touching another ship (including a diagonal square). \n
   You can see the ships remaining for both players, and will be notified when you sink one.`

@@ -19,7 +19,10 @@ afterEach(() => {
 describe('game reducer', () => {
   const initialState: GameState = {
     inGame: 'idle',
-    turn: 'Player',
+    turn: null,
+    highScores: null,
+    status: 'idle',
+    error: null
   }
   
   it('should handle initial state', () => {

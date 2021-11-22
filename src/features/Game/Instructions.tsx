@@ -11,7 +11,7 @@ export const Instructions = (props: any) => {
   }
 
   return (
-    <div className="flex flex-col border inset-auto w-4/5 md:w-1/2 bg-white fixed text-left h-auto -mt-4 shadow">
+    <div className="flex flex-col border md:w-1/2 bg-white fixed text-left h-auto top-2 sm:top-12 sm:left-20 sm:right-20 left-4 right-4 shadow">
       <div className="flex flex-row items-end self-end w-full p-2">
         <h2 className="self-center w-3/4">Instructions</h2>
         <p className="w-1/4">{`${pageNumber}/${instructionsContent.length}`}</p>

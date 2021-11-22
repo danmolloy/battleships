@@ -55,7 +55,7 @@ export const Header = () => {
     <div className="header m-3" id="header">
         <h1 id="title" className="p-4">{inGame === 'ended' || inGame === 'idle' ? "Battleships" :`${turn} turn`}</h1>
 
-      <div className="flex flex-row items-center">
+      <div className="flex flex-col sm:flex-row items-center">
       <button id="status-btn" 
       className="py-2 px-4 bg-green-500  w-36
         text-white font-semibold rounded-lg 
@@ -83,7 +83,7 @@ export const Header = () => {
       </div>
       {showInstructions &&
       <Instructions close={() => setShowInstructions(false)}/>}
-      {showScores &&<HighScores />}
+      {showScores && <HighScores />}
       {showForm && <NameForm hideForm={() => setShowForm(false)}/>}
     </div>
   )
