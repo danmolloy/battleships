@@ -1,4 +1,6 @@
-export const fetchMove = (board: Array<{val: any, id: any}>, attackArr: number[]) => {
+import { Square } from '../cpuBoard/cpuShipsSlice'
+
+export const fetchMove = (board: Square[], attackArr: number[]) => {
   if (attackArr.length > 0) {
     return new Promise<{ data: number }>((resolve) => 
     setTimeout(() => resolve({ data: targetedAttack(board, attackArr)}), 500)
@@ -10,7 +12,7 @@ export const fetchMove = (board: Array<{val: any, id: any}>, attackArr: number[]
   }
 }
 
-const randAttack = (board: Array<{val: any, id: any}>) => {
+const randAttack = (board: Square[]) => {
   let square = Math.floor(Math.random() * 100);
   while (board[square].val === 'O' || 
     board[square].val === 'X') {
@@ -19,7 +21,7 @@ const randAttack = (board: Array<{val: any, id: any}>) => {
   return square
 }
 
-const targetedAttack = (board: Array<{val: any, id: any}>, attackArr: Array<number>) => {
+const targetedAttack = (board: Square[], attackArr: Array<number>) => {
   let loopCount = 0;
   if (attackArr.length === 1) {
     let square = attackArr[0]

@@ -48,10 +48,10 @@ export const CPUShips = () => {
     let arr: string[] = []
     for (let i = 0; i < squares.length; i++) {
       if (squares[i].val !== null &&
-          squares[i].val.length > 1 &&
-          !arr.includes(squares[i].val)
+          squares[i].val!.length > 1 &&
+          !arr.includes(squares[i].val!)
         ) {
-          arr.push(squares[i].val)
+          arr.push(squares[i].val!)
         }
     } 
     arr.sort()
@@ -78,6 +78,3 @@ export const CPUShips = () => {
   )
 }
 
-function i(i: any, arg1: (index: any) => JSX.Element) {
-  throw new Error('Function not implemented.')
-}

@@ -1,8 +1,18 @@
 import { useEffect } from "react"
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { toggleInGame } from '../Game/gameSlice'
+import { Square } from '../cpuBoard/cpuShipsSlice'
 
-export const BoardInfo = (props: any) => {
+
+
+export const BoardInfo = (props: {
+  squares: Square[], 
+  whoAmI: "Player" | "CPU", 
+  attackCount: number, 
+  showList: boolean, 
+  showShips: any, 
+  showShipsRemaining: any}) => {
+    
   const inGame = useAppSelector(state => state.game.inGame)
   const CPUOrPlayer = props.whoAmI
   const dispatch = useAppDispatch()

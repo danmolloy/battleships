@@ -1,8 +1,16 @@
 import { createAsyncThunk, createSlice, nanoid } from '@reduxjs/toolkit'
 import type { RootState, AppThunk } from '../../app/store'
 import { setShip } from '../Game/setShip'
-import { BoardInfo } from '../Game/BoardInfo'
 import { fetchMove } from './CPUMoves'
+import { Square } from '../cpuBoard/cpuShipsSlice'
+
+export interface PlayerBoardState {
+  PlayerSquares: Square[],
+  boardSet: boolean,
+  numAttacks: number,
+  currentAttack: number[],
+  CPUMove: 'idle'|'thinking' | 'complete',
+}
 
 const shipArr = (arr: Array<{val: any, id: any}>) => {
   let returnArr: Array<string> = [];
@@ -13,15 +21,6 @@ const shipArr = (arr: Array<{val: any, id: any}>) => {
         returnArr.push(arr[i].val)
       }
   } return returnArr;
-}
-
-
-export interface PlayerBoardState {
-  PlayerSquares: Array<{val: any, id: any}>,
-  boardSet: boolean,
-  numAttacks: number,
-  currentAttack: number[],
-  CPUMove: 'idle'|'thinking' | 'complete',
 }
 
 const initialState: PlayerBoardState = {

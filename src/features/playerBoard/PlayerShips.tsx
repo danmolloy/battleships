@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { RootState } from '../../app/store'
 import { AsyncMove, setCPUMove } from './playerShipsSlice'
 import { setTurn } from '../Game/gameSlice'
 import { BoardInfo } from '../Game/BoardInfo'
@@ -8,11 +7,11 @@ import { BoardInfo } from '../Game/BoardInfo'
 export const PlayerShips = () => {
   const [showShipsRemaining, setShowShipsRemaining] = useState(true)
 
-  const squares = useAppSelector((state: RootState) => state.playerShips.PlayerSquares)
-  const attackCount = useAppSelector((state: RootState) => state.playerShips.numAttacks)
-  const turn = useAppSelector((state: RootState) => state.game.turn)
-  const CPUMove = useAppSelector((state: RootState) => state.playerShips.CPUMove)
-  const inGame = useAppSelector((state: RootState) => state.game.inGame)
+  const squares = useAppSelector(state => state.playerShips.PlayerSquares)
+  const attackCount = useAppSelector(state => state.playerShips.numAttacks)
+  const turn = useAppSelector(state => state.game.turn)
+  const CPUMove = useAppSelector(state => state.playerShips.CPUMove)
+  const inGame = useAppSelector(state => state.game.inGame)
 
   const dispatch = useAppDispatch()
 

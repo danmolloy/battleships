@@ -1,8 +1,8 @@
 import { act, render } from '@testing-library/react';
 import { unmountComponentAtNode } from 'react-dom';
-import gameReducer, { toggleInGame, setTurn, GameState } from './gameSlice'
-import { HighScores } from './Highscores.tsx/HighScores'
-import { Header } from './Header'
+import gameReducer, { toggleInGame, setTurn, GameState } from '../gameSlice'
+import { HighScores } from '../Highscores/HighScores'
+import { Header } from '../Header'
 
 let container: any = null;
 beforeEach(() => {

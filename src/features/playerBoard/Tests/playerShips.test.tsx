@@ -3,7 +3,7 @@ import playerShipsReducer, {
   setCPUMove, 
   resetPlayerBoard, 
   PlayerBoardState 
-} from './playerShipsSlice'
+} from '../playerShipsSlice'
 import { nanoid } from '@reduxjs/toolkit'
 
 describe('playerShips reducer', () => {

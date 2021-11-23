@@ -3,9 +3,9 @@ import { toggleInGame, setTurn, fetchScores } from './gameSlice'
 import { useState, useEffect } from 'react'
 import { setPlayerShips, resetPlayerBoard } from '../playerBoard/playerShipsSlice'
 import { setCPUShips, resetCPUBoard } from '../cpuBoard/cpuShipsSlice'
-import { HighScores } from './Highscores.tsx/HighScores'
-import { Instructions } from './Instructions'
-import { NameForm } from './Highscores.tsx/NameForm'
+import { HighScores } from './Highscores/HighScores'
+import { Instructions } from './Instructions/Instructions'
+import { NameForm } from './Highscores/NameForm'
 
 export const Header = () => {
   const [showInstructions, setShowInstructions] = useState(false)
@@ -53,33 +53,22 @@ export const Header = () => {
 
   return (
     <div className="header m-3" id="header">
-        <h1 id="title" className="p-4">{inGame === 'ended' || inGame === 'idle' ? "Battleships" :`${turn} turn`}</h1>
-
+      <h1 id="title" className="p-4">{inGame === 'ended' || inGame === 'idle' ? "Battleships" :`${turn} turn`}</h1>
       <div className="flex flex-col sm:flex-row items-center">
-      <button id="status-btn" 
-      className="py-2 px-4 bg-green-500  w-36
-        text-white font-semibold rounded-lg 
-        shadow-md hover:bg-green-600 focus:outline-none 
-        focus:ring-2 focus:ring-green-400 focus:ring-opacity-75 m-1"
-        onClick={handleClick}
-      >
-        {button}
-      </button>
-      <button onClick={() => setShowInstructions(!showInstructions)} className="py-2 px-4 bg-blue-500 
-      text-white font-semibold rounded-lg w-36
-      shadow-md hover:bg-blue-600 focus:outline-none 
-      focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 m-1">
-        Instructions
-      </button>
-      <button
-      className="py-2 px-4 bg-gray-200 w-36
-      text-gray-600 font-semibold rounded-lg 
-      shadow-md hover:bg-gray-300 focus:outline-none 
-      focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 m-1"
-      onClick={() => getScores()}
-      >
-        High Scores
-      </button>
+        <button id="status-btn" 
+        className="header-btn bg-green-500 text-white hover:bg-green-600 focus:ring-green-400"
+        onClick={handleClick}>
+          {button}
+        </button>
+        <button onClick={() => setShowInstructions(!showInstructions)} 
+        className="header-btn bg-blue-500 text-white hover:bg-blue-600 focus:ring-gray-500">
+          Instructions
+        </button>
+        <button
+        className="header-btn bg-gray-200 text-gray-600 hover:bg-gray-300 focus:ring-gray-500"
+        onClick={() => getScores()}>
+          High Scores
+        </button>
       </div>
       {showInstructions &&
       <Instructions close={() => setShowInstructions(false)}/>}

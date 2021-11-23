@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { instructionsContent } from "./InstructionsContent"
 
-export const Instructions = (props: any) => {
+export const Instructions = (props: {close: any}) => {
   const [pageNumber, setPageNumber] = useState(1)
 
   const handleClick = () => {
@@ -11,13 +11,13 @@ export const Instructions = (props: any) => {
   }
 
   return (
-    <div className="flex flex-col border md:w-1/2 bg-white fixed text-left h-auto top-2 sm:top-12 sm:left-20 sm:right-20 left-4 right-4 shadow">
+    <div className="instructions-window">
       <div className="flex flex-row items-end self-end w-full p-2">
         <h2 className="self-center w-3/4">Instructions</h2>
         <p className="w-1/4">{`${pageNumber}/${instructionsContent.length}`}</p>
       </div>
       <div className="my-4">
-      {instructionsContent[pageNumber - 1].split('\n').map((i: any) => 
+      {instructionsContent[pageNumber - 1].text.split('\n').map((i: string) => 
       <p className="p-2">{i}</p>)}
       </div>
       <div className="flex flex-row justify-end w-full">
