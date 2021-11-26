@@ -21,6 +21,7 @@ export const Header = () => {
   useEffect(() => {
     if (inGame === 'ended') {
       setShowScores(true)
+      dispatch(fetchScores()) 
       setButton('Reset')
       setShowForm(true)
     } else if (inGame === 'playing') {
@@ -65,6 +66,7 @@ export const Header = () => {
           Instructions
         </button>
         <button
+        id="highscores-btn"
         className="header-btn bg-gray-200 text-gray-600 hover:bg-gray-300 focus:ring-gray-500"
         onClick={() => getScores()}>
           High Scores

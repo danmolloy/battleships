@@ -58,7 +58,7 @@ export const playerShipsSlice = createSlice({
         }
       } else if (action.payload.length === 4) {
         for (let i=0; i < action.payload.length; i++) {
-          state.PlayerSquares[action.payload[i]].val = '(4) BattleShip'
+          state.PlayerSquares[action.payload[i]].val = '(4) Battleship'
         }
       } else if (action.payload.length === 3) {
         const checker = () => {

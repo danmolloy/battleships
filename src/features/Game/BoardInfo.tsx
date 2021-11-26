@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { toggleInGame } from '../Game/gameSlice'
 import { Square } from '../cpuBoard/cpuShipsSlice'
-
+import { nanoid } from '@reduxjs/toolkit'
 
 
 export const BoardInfo = (props: {
@@ -35,11 +35,11 @@ export const BoardInfo = (props: {
         }
     } 
     arr.sort()
-    return arr.map(i => <p>{i}</p>)
+    return arr.map(i => <p key={nanoid()}>{i}</p>)
   }  
 
   return (
-    <div>
+    <div id={`${CPUOrPlayer}-board`} className="board-info">
       <p>Attack count: {props.attackCount}</p>
       <div>
         <div onClick={() => props.showShips()}>

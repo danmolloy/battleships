@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App fetches Highscores 1`] = `"BattleshipsStartInstructionsHigh ScoresNameMovesKelly38Eoghan44Fiona45Ed48Dan49Jorge54CPU ShipsPlayer Ships"`;
+
+exports[`App handles Start button click 1`] = `
+"<p>Attack count: 0</p>
+<div>
+  <div>
+    <div>
+      <p>Ships Remaining: 5</p><i class=\\"up-arrow\\"></i>
+    </div>
+    <p>(2) PatrolBoat</p>
+    <p>(3) Destroyer</p>
+    <p>(3) Submarine</p>
+    <p>(4) Battleship</p>
+    <p>(5) Carrier</p>
+  </div>
+</div>"
+`;
+
+exports[`App handles Start button click 2`] = `
+"<p>Attack count: 0</p>
+<div>
+  <div>
+    <div>
+      <p>Ships Remaining: 5</p><i class=\\"up-arrow\\"></i>
+    </div>
+    <p>(2) PatrolBoat</p>
+    <p>(3) Destroyer</p>
+    <p>(3) Submarine</p>
+    <p>(4) Battleship</p>
+    <p>(5) Carrier</p>
+  </div>
+</div>"
+`;
+
+exports[`App renders app without error 1`] = `
+"<div class=\\"flex flex-col justify-center items-center text-center\\">
+  <div class=\\"header m-3\\" id=\\"header\\">
+    <h1 id=\\"title\\" class=\\"p-4\\">Battleships</h1>
+    <div class=\\"flex flex-col sm:flex-row items-center\\"><button id=\\"status-btn\\" class=\\"header-btn bg-green-500 text-white hover:bg-green-600 focus:ring-green-400\\">Start</button><button class=\\"header-btn bg-blue-500 text-white hover:bg-blue-600 focus:ring-gray-500\\">Instructions</button><button id=\\"highscores-btn\\" class=\\"header-btn bg-gray-200 text-gray-600 hover:bg-gray-300 focus:ring-gray-500\\">High Scores</button></div>
+  </div>
+  <div class=\\"flex flex-col sm:flex-row items-start\\">
+    <div class=\\"outer-board pb-1\\" id=\\"cpu-ships\\">
+      <div id=\\"cpu-board-inner\\" class=\\"inner-board shadow-sm\\">
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+        <div class=\\"square hover:bg-blue-300\\"></div>
+      </div>
+      <h3>CPU Ships</h3>
+    </div>
+    <div class=\\"outer-board pb-1\\" id=\\"player-ships\\">
+      <div id=\\"player-board-inner\\" class=\\"inner-board\\">
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+        <div class=\\"square\\"></div>
+      </div>
+      <h3>Player Ships</h3>
+    </div>
+  </div>
+</div>"
+`;

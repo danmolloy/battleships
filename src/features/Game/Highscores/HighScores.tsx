@@ -9,6 +9,7 @@ export const HighScores = () => {
   return (
     <div className="flex flex-col m-4">
       <table>
+        <tbody>
        <tr>
          <th>Name</th>
          <th>Moves</th>
@@ -18,6 +19,7 @@ export const HighScores = () => {
           <td className="p-2 border-r">{i.name}</td>
           <td className="p-2">{i.moves}</td>
         </tr>)}
+        </tbody>
       </table>
     </div>
   )

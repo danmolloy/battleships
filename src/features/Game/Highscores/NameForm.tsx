@@ -9,17 +9,21 @@ export const NameForm = (props: {hideForm: any}) => {
   const dispatch = useAppDispatch()
   const playerScore = useAppSelector(state => state.cpuShips.numAttacks)
 
+  const handleChange = (e: any) => {
+    setPlayerName(e.target.value)
+  }
+
   const handleClick = () => {
     dispatch(addPlayerData({name: playerName, moves: playerScore}))
     props.hideForm();
   }
 
   return (
-    <div>
+    <div id="score-form">
         <label>Your name:</label>
-        <input className="border px-1" value={playerName} onChange={(e) => setPlayerName(e.target.value)}/>
+        <input id="score-input" className="border px-1" value={playerName} onChange={(e) => handleChange(e)}/>
         <button 
-        className="header-btn text-gray-600 hover:bg-gray-300 focus:ring-gray-500" 
+        className="header-btn bg-pink-600 text-white hover:bg-pink-700 focus:ring-pink-500" 
         onClick={() => handleClick()}>Submit</button>
       </div>
   )

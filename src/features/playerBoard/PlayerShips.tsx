@@ -41,10 +41,10 @@ export const PlayerShips = () => {
 
   return (
     <div className="outer-board pb-1" id="player-ships">
-      <h3>Player Ships</h3>
-      <div className="inner-board">
+      <div id="player-board-inner" className="inner-board">
         {renderedSquares}
       </div>
+      <h3>Player Ships</h3>
       {turn !== null && <BoardInfo 
         attackCount={attackCount} 
         showShipsRemaining={showShipsRemaining}

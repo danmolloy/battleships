@@ -37,7 +37,7 @@ export const CPUShips = () => {
   const renderedSquares = squares.map(i => 
     <div 
     key={i.id} 
-    className={i.val === "X" ? "square-hit": i.val === "O" ? "square" :"square hover:bg-blue-500"} 
+    className={i.val === "X" ? "square-hit": i.val === "O" ? "square" :"square hover:bg-blue-300"} 
     onClick={() => handleClick(i.id)}
     >
       {i.val === null ? null : i.val.length > 1 ? null : i.val}
@@ -61,10 +61,10 @@ export const CPUShips = () => {
  
   return (
     <div className="outer-board pb-1" id="cpu-ships">
-      <h3>CPU Ships</h3>
-      <div className="inner-board">
+      <div id="cpu-board-inner" className="inner-board shadow-sm">
         {renderedSquares}
       </div>
+      <h3>CPU Ships</h3>
       {turn !== null && 
       <BoardInfo 
         attackCount={attackCount} 

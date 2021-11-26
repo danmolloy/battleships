@@ -25,15 +25,15 @@
 }
 
 .inner-board {
-  @apply w-full flex flex-row flex-wrap;
+  @apply w-full flex flex-row flex-wrap bg-blue-200;
 }
 
 .square {
-  @apply h-5 w-5 bg-blue-300 m-1;
+  @apply h-5 w-5 bg-blue-500 m-1 text-white font-bold flex text-center justify-center;
 }
 
 .square-hit {
-  @apply h-5 w-5 bg-red-300 m-1;
+  @apply h-5 w-5 bg-red-400 text-black m-1;
 }
 
 .down-arrow {
