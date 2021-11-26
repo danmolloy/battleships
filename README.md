@@ -16,7 +16,7 @@ Helpful data on ships remaining and attack count.
 ## Stack:
 - React
 - Redux
-- Tailwind
-- Jest
 - TypeScript
+- Tailwind
+- Jest & React Testing Library
 - MirageJS
